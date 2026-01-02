@@ -37,3 +37,12 @@ jobs:
           docker run -d -p 3000:3000 portfolio:${{ github.sha }}
           sleep 5
           docker ps
+      - name: Build Docker image
+        run: docker build -t ghcr.io/${{ github.repository }}/portfolio:${{ github.sha }} .
+
+      - name: Log in to GitHub Container Registry
+        run: |
+          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+      - name: Push Docker image
+        run: docker push ghcr.io/${{ github.repository }}/portfolio:${{ github.sha }}
