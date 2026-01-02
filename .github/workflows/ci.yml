@@ -28,3 +28,12 @@ jobs:
 
       - name: Build project
         run: npm run build
+
+      - name: Build Docker image
+        run: docker build -t portfolio:${{ github.sha }} .
+
+      - name: Smoke test Docker container
+        run: |
+          docker run -d -p 3000:3000 portfolio:${{ github.sha }}
+          sleep 5
+          docker ps
