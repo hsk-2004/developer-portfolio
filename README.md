@@ -1,3 +1,5 @@
+[![CI Pipeline](https://github.com/hsk-2004/developer-portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/hsk-2004/developer-portfolio/actions/workflows/ci.yml)
+
 <p align="center" width="100%">
   <!-- You can replace this with your own logo later -->
   <img height="100" src="./public/profile-new.png" alt="Harman Singh Logo">
