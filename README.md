@@ -51,7 +51,7 @@ The application is production-ready and containerized using Docker.
 </p>
 
 <p align="center">
-  <strong>Live demo coming soon</strong>
+  <strong>Live demo - http://13.203.103.133</strong>
 </p>
 
 ---
