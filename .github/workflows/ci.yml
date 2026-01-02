@@ -23,8 +23,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run ESLint
-        run: npx next lint app
+      - name: Run ESLint (stable)
+        run: npx eslint . --ext .js,.jsx,.ts,.tsx
 
       - name: Build project
         run: npm run build
