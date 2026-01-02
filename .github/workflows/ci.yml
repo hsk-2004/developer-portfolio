@@ -24,7 +24,7 @@ jobs:
         run: npm ci
 
       - name: Run ESLint (stable)
-        run: npx eslint . --ext .js,.jsx,.ts,.tsx
+        run: npx eslint .
 
       - name: Build project
         run: npm run build
