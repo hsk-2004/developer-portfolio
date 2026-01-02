@@ -45,7 +45,7 @@ The application is production-ready and containerized using Docker.
 
 <p align="center">
   <!-- Replace with your own screenshot if you want -->
-  <img src="./public/image/portfolio-ss.png" alt="Portfolio Screenshot" width="100%">
+  <img src="./public/portfolio-ss.png" alt="Portfolio Screenshot" width="100%">
 </p>
 
 <p align="center">
