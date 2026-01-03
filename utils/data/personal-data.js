@@ -3,7 +3,8 @@ export const personalData = {
   profile: "/profile-new.png",
   designation: "Computer Science Undergraduate | Full-Stack & DevOps Enthusiast",
   description:
-    "I am a Computer Science undergraduate with hands-on experience in full-stack web development and applied machine learning. I have worked on real-world projects involving MERN stack applications, Android development, and ML-based prediction systems. I enjoy building scalable, production-ready software and am currently focusing on DevOps practices such as CI/CD, containerization, and cloud deployment. I am a fast learner, problem solver, and passionate about understanding how systems work in real production environments.",
+  "Computer Science undergraduate with hands-on experience in full-stack web development and applied machine learning. Contributed to real-world projects involving MERN-based applications, Android development, and machine learning prediction systems. Currently strengthening DevOps capabilities with a focus on CI/CD pipelines, containerization, and cloud deployment. Demonstrates strong problem-solving ability, adaptability, and a solid understanding of production-level software systems.",
+
   email: "Hskharmansingh@gmail.com",
   phone: "+91 8076618658",
   address: "India",
