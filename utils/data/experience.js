@@ -1,9 +1,9 @@
 export const experiences = [
   {
     id: 1,
-    title: "AI / ML Intern",
-    company: "Tata AIA Life Insurance",
-    duration: "(Jun 2025 – Jul 2025)",
+    title: "Freelance Full Stack Developer",
+    company: "SkyForge System Solutions",
+    duration: "(Mar 2026 – Apr 2026)",
   },
   {
     id: 2,
@@ -13,8 +13,8 @@ export const experiences = [
   },
   {
     id: 3,
-    title: "Computer Science Undergraduate",
-    company: "BML Munjal University",
-    duration: "(Aug 2023 – Present)",
+    title: "AI / ML Intern",
+    company: "Tata AIA Life Insurance",
+    duration: "(Jun 2025 – Jul 2025)",
   },
 ];
