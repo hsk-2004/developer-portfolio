@@ -10,7 +10,7 @@ const ScrollSequence = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [imagesLoaded, setImagesLoaded] = useState(false);
-  const { setIsLoading, setLoading } = useLoading();
+  const { setLoading } = useLoading();
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
 
   useEffect(() => {
@@ -78,13 +78,6 @@ const ScrollSequence = () => {
     imagesRef.current = images;
     return () => clearTimeout(fallbackTimer);
   }, [isMobile, setLoading]);
-  useEffect(() => {
-    if (imagesLoaded) {
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 500);
-    }
-  }, [imagesLoaded, setIsLoading]);
 
   useGSAP(
     () => {
