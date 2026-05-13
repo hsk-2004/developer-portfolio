@@ -78,6 +78,13 @@ const ScrollSequence = () => {
     imagesRef.current = images;
     return () => clearTimeout(fallbackTimer);
   }, [isMobile, setLoading]);
+  useEffect(() => {
+    if (imagesLoaded) {
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 500);
+    }
+  }, [imagesLoaded, setIsLoading]);
 
   useGSAP(
     () => {

@@ -22,7 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-.npmrc
+!.npmrc
 
 backup/
 .env

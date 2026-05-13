@@ -1,9 +1,9 @@
 import { PropsWithChildren } from "react";
-import { motion } from "framer-motion";
+import { motion, type Transition, type Variants } from "framer-motion";
 import "./styles/Landing.css";
 
 const Landing = ({ children }: PropsWithChildren) => {
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -14,7 +14,7 @@ const Landing = ({ children }: PropsWithChildren) => {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { y: 100, opacity: 0, rotateX: -90 },
     visible: {
       y: 0,
@@ -29,7 +29,7 @@ const Landing = ({ children }: PropsWithChildren) => {
     },
   };
 
-  const floatingTransition = {
+  const floatingTransition: Transition = {
     duration: 3,
     repeat: Infinity,
     repeatType: "reverse" as const,
