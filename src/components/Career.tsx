@@ -12,63 +12,55 @@ const Career = () => {
           <div className="career-timeline">
             <div className="career-dot"></div>
           </div>
+
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Co-Founder</h4>
-                <h5>CallHQ.ai</h5>
+                <h4>Full Stack Engineer</h4>
+                <h5>SkyForge System Solutions</h5>
               </div>
-              <h3>NOW</h3>
+              <h3>2026</h3>
             </div>
             <p>
-              Building CallHQ.ai, a voice AI platform for
-              automating customer calls, support, and conversions.
+              Developed <span>scalable web applications</span> with responsive UI and integrated RESTful APIs. Deployed production-ready apps on <span>Azure servers</span> and utilized Git workflows for collaborative development.
             </p>
+            <div className="career-tags">
+              <span>React</span><span>Node.js</span><span>Azure</span><span>REST APIs</span>
+            </div>
           </div>
+
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Adobe</h4>
-                <h5>6+ years · Noida</h5>
+                <h4>Web Developer Intern</h4>
+                <h5>Yugasa Software Labs</h5>
               </div>
-              <h3>2017–24</h3>
+              <h3>2025</h3>
             </div>
             <p>
-              Senior Lead Software Engineer (Feb 2024 – May 2024). Lead Software
-              Engineer (Feb 2021 – Feb 2024). Software Engineer II (Dec 2017 –
-              Feb 2021): internationalization, globalization, and localization for
-              Adobe Technical Communication Suite; functional and linguistic testing
-              strategy; in-house tooling; collaboration with product and engineering
-              for high-quality localized releases.
+              Built <span>frontend components</span> and integrated backend APIs using Node.js and PHP. Assisted in debugging, testing, and <span>deployment pipelines</span> for client-facing web applications.
             </p>
+            <div className="career-tags">
+              <span>Node.js</span><span>PHP</span><span>Frontend</span><span>Testing</span>
+            </div>
           </div>
+
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Consultant</h4>
-                <h5>Genpact Headstrong </h5>
+                <h4>B.Tech CSE</h4>
+                <h5>BML Munjal University</h5>
               </div>
-              <h3>2016–17</h3>
+              <h3>2023–27</h3>
             </div>
             <p>
-              Sep 2016 – Nov 2017. Developed and maintained WCF services consumed
-              by the UI; deployment support across environments; NUnit tests and
-              coverage; bug fixes from QA and users; database work.
+              Pursuing <span>Computer Science and Engineering</span>. Focusing on full-stack development, <span>AI/ML</span>, cloud architectures, and building production-grade digital products.
             </p>
-          </div>
-          <div className="career-info-box">
-            <div className="career-info-in">
-              <div className="career-role">
-                <h4>Sf Engineer</h4>
-                <h5>Infogain</h5>
-              </div>
-              <h3>2013-16</h3>
+            <div className="career-tags">
+              <span>Full Stack</span><span>AI/ML</span><span>Cloud</span><span>DevOps</span>
             </div>
-            <p>
-              Software engineering across enterprise projects, contributing to
-              design, development, and delivery of business applications.
-            </p>
           </div>
+
         </div>
       </div>
     </div>

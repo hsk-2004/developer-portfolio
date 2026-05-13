@@ -1,81 +1,87 @@
-import { MdArrowOutward, MdCopyright } from "react-icons/md";
+import { MdArrowOutward, MdCopyright, MdEmail, MdSchool } from "react-icons/md";
 import "./styles/Contact.css";
 
 const Contact = () => {
   return (
-    <div className="contact-section section-container" id="contact">
-      <div className="contact-container">
-        <h3>Contact</h3>
-        <div className="contact-flex">
-          <div className="contact-box">
-            <h4>Connect</h4>
-            <p>
-              <a
-                href="https://www.linkedin.com/in/akashrmalhotra/"
-                target="_blank"
-                rel="noreferrer"
-                data-cursor="disable"
-              >
-                LinkedIn — akashrmalhotra
-              </a>
-            </p>
-            <h4>Education</h4>
-            <p>
-              PGPWE (MBA), Indian Institute of Management, Lucknow — 2021–2023
-            </p>
-            <p>
-              B.Tech Computer Science, Manav Rachna Educational Institutions —
-              2009–2013
-            </p>
-          </div>
-          <div className="contact-box">
-            <h4>Social</h4>
+    <div className="contact-section" id="contact">
+      <div className="contact-container section-container">
+
+        {/* Big CTA Heading */}
+        <div className="contact-header">
+          <div className="contact-header-bg">Great.</div>
+          <h2 className="contact-headline">
+            Let's <span>Build</span>
+            <br /> Something Great.
+          </h2>
+          <p className="contact-subtext">
+            Have a project in mind, need a full-stack engineer, or just want to connect?
+            I'm always open to new opportunities and collaborations.
+          </p>
+          <div className="contact-cta-wrapper">
             <a
-              href="https://github.com/akashrmalhotra"
-              target="_blank"
-              rel="noreferrer"
+              href="mailto:hskharmansingh@gmail.com"
+              className="contact-cta"
               data-cursor="disable"
-              className="contact-social"
             >
-              GitHub <MdArrowOutward />
+              <MdEmail /> Get In Touch
             </a>
+          </div>
+        </div>
+
+        {/* Info Grid */}
+        <div className="contact-grid">
+          <div className="contact-card">
+            <h4 className="contact-card-label">Connect</h4>
             <a
-              href="https://www.linkedin.com/in/akashrmalhotra/"
+              href="https://www.linkedin.com/in/harman-singh-681758347/"
               target="_blank"
               rel="noreferrer"
               data-cursor="disable"
-              className="contact-social"
+              className="contact-link"
             >
               LinkedIn <MdArrowOutward />
             </a>
             <a
-              href="https://www.youtube.com/@Leftbraincoder"
+              href="https://github.com/hsk-2004"
               target="_blank"
               rel="noreferrer"
               data-cursor="disable"
-              className="contact-social"
+              className="contact-link"
             >
-              YouTube <MdArrowOutward />
-            </a>
-            <a
-              href="https://www.instagram.com/leftbraincoder/"
-              target="_blank"
-              rel="noreferrer"
-              data-cursor="disable"
-              className="contact-social"
-            >
-              Instagram <MdArrowOutward />
+              GitHub <MdArrowOutward />
             </a>
           </div>
-          <div className="contact-box">
+
+          <div className="contact-card">
+            <h4 className="contact-card-label">Education</h4>
+            <div className="contact-edu">
+              <MdSchool className="contact-edu-icon" />
+              <div>
+                <p className="contact-edu-degree">B.Tech Computer Science & Engineering</p>
+                <p className="contact-edu-school">BML Munjal University — 2023–2027</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="contact-card contact-card-credit">
             <h2>
-              Designed and Developed <br /> by <span>Akash Malhotra</span>
+              Designed & Developed <br /> by <span>Harman Singh</span>
             </h2>
             <h5>
               <MdCopyright /> 2026
             </h5>
           </div>
         </div>
+
+      </div>
+
+      {/* Animated background lines */}
+      <div className="contact-bg-lines">
+        <div className="contact-line"></div>
+        <div className="contact-line"></div>
+        <div className="contact-line"></div>
+        <div className="contact-line"></div>
+        <div className="contact-line"></div>
       </div>
     </div>
   );

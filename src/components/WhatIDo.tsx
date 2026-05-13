@@ -36,71 +36,28 @@ const WhatIDo = () => {
       </div>
       <div className="what-box">
         <div className="what-box-in">
-          <div className="what-border2">
-            <svg width="100%">
-              <line
-                x1="0"
-                y1="0"
-                x2="0"
-                y2="100%"
-                stroke="white"
-                strokeWidth="2"
-                strokeDasharray="7,7"
-              />
-              <line
-                x1="100%"
-                y1="0"
-                x2="100%"
-                y2="100%"
-                stroke="white"
-                strokeWidth="2"
-                strokeDasharray="7,7"
-              />
-            </svg>
-          </div>
           <div
             className="what-content what-noTouch"
             ref={(el) => setRef(el, 0)}
           >
-            <div className="what-border1">
-              <svg height="100%">
-                <line
-                  x1="0"
-                  y1="0"
-                  x2="100%"
-                  y2="0"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeDasharray="6,6"
-                />
-                <line
-                  x1="0"
-                  y1="100%"
-                  x2="100%"
-                  y2="100%"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeDasharray="6,6"
-                />
-              </svg>
-            </div>
             <div className="what-corner"></div>
 
             <div className="what-content-in">
-              <h3>AI & AUTOMATION</h3>
-              <h4>Workflow Intelligence for Organizations</h4>
+              <h3>AI & INTELLIGENCE</h3>
+              <h4>AI-Powered Platforms</h4>
               <p>
-                AI specialist helping organizations automate workflows—internal ops
-                and customer-facing—so teams ship faster with less manual work.
+                Focused on building <span>AI-powered platforms</span> and AI-integrated systems, 
+                leveraging LLMs and RAG architectures to deliver production-ready digital products.
               </p>
-              <h5>Skillset & tools</h5>
+              <h5>Expertise & Models</h5>
               <div className="what-content-flex">
-                <div className="what-tags">LLMs &amp; agents</div>
-                <div className="what-tags">Workflow design</div>
-                <div className="what-tags">RAG &amp; retrieval</div>
-                <div className="what-tags">Evals &amp; guardrails</div>
-                <div className="what-tags">Integrations</div>
-                <div className="what-tags">Product strategy</div>
+                <div className="what-tags">ChatGPT</div>
+                <div className="what-tags">Claude</div>
+                <div className="what-tags">Gemini</div>
+                <div className="what-tags">DeepSeek</div>
+                <div className="what-tags">Codex</div>
+                <div className="what-tags">RAG Pipelines</div>
+                <div className="what-tags">LLM Agents</div>
               </div>
               <div className="what-arrow"></div>
             </div>
@@ -109,36 +66,21 @@ const WhatIDo = () => {
             className="what-content what-noTouch"
             ref={(el) => setRef(el, 1)}
           >
-            <div className="what-border1">
-              <svg height="100%">
-                <line
-                  x1="0"
-                  y1="100%"
-                  x2="100%"
-                  y2="100%"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeDasharray="6,6"
-                />
-              </svg>
-            </div>
             <div className="what-corner"></div>
             <div className="what-content-in">
-              <h3>BUILD &amp; SCALE</h3>
-              <h4>Shipping AI in Production</h4>
+              <h3>FULL STACK ENG</h3>
+              <h4>Scalable Infrastructures</h4>
               <p>
-                I build the systems behind it: APIs, data, voice/real-time, and
-                full-stack products—production-ready, not slide decks.
+                Expertise in <span>frontend engineering</span>, backend architecture, 
+                and cloud deployment, with strong hands-on experience in the MERN ecosystem and Next.js.
               </p>
-              <h5>Skillset & tools</h5>
+              <h5>Core Stack</h5>
               <div className="what-content-flex">
-                <div className="what-tags">Node.js</div>
-                <div className="what-tags">Python</div>
-                <div className="what-tags">REST &amp; real-time APIs</div>
+                <div className="what-tags">Next.js</div>
                 <div className="what-tags">PostgreSQL</div>
-                <div className="what-tags">MongoDB</div>
-                <div className="what-tags">React</div>
-                <div className="what-tags">Cloud &amp; infra</div>
+                <div className="what-tags">Node.js</div>
+                <div className="what-tags">Docker</div>
+                <div className="what-tags">AWS / Azure</div>
               </div>
               <div className="what-arrow"></div>
             </div>

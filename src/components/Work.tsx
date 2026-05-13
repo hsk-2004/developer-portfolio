@@ -1,143 +1,182 @@
-import { useState, useCallback } from "react";
+import { useEffect, useRef } from "react";
 import "./styles/Work.css";
 import WorkImage from "./WorkImage";
-import { MdArrowBack, MdArrowForward } from "react-icons/md";
+import CursorGlow from "./CursorGlow";
+import { MdArrowForward } from "react-icons/md";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
   {
-    title: "CallHQ",
-    category: "Voice AI Calling Platform",
-    tools: "Voice AI, Calling Automation, CRM Integrations",
-    image: "/images/callhq.png",
-    link: "https://callhq.ai",
+    title: "Hlty.care",
+    category: "Wellness Platform",
+    description:
+      "A full-scale wellness ecosystem with role-based dashboards, automated onboarding, and integrated Shopify commerce for a U.S. healthcare client.",
+    tools: ["Next.js", "Shopify", "Tailwind CSS", "Prisma ORM"],
+    image: "/images/hlty.care.png",
+    link: "https://hlty.care",
   },
   {
-    title: "Whatsapp Automation",
-    category: "WABA Application",
-    tools: "WhatsApp Business API, Workflow Automation, Notifications",
-    image: "/images/whatsapp.png",
-    link: "https://whatsapp.callhq.ai",
+    title: "SkyForge",
+    category: "Enterprise Frontend",
+    description:
+      "A high-performance enterprise frontend application built with reusable component architecture and client-side routing for SkyForge System Solutions.",
+    tools: ["React", "Tailwind CSS", "REST APIs", "Azure"],
+    image: "/images/skyforge.png",
+    link: "https://buildwithskyforge.com/",
   },
   {
-    title: "Broki",
-    category: "Real Estate Platform for FnB Industry",
-    tools: "Property Discovery, Lead Management, Marketplace Workflows",
-    image: "/images/broki.png",
-    link: "https://broki.in",
+    title: "QuickQR",
+    category: "Scalable Backend",
+    description:
+      "A production-grade backend system featuring RESTful APIs, PostgreSQL database design with Prisma ORM, and CI/CD deployment pipelines.",
+    tools: ["Node.js", "Express", "PostgreSQL", "Prisma ORM"],
+    image: "/images/quickqr.png",
+    link: "https://quickqr.harmanxdev.fun/",
   },
   {
-    title: "Orrdr.com",
-    category: "Ecommerce Platform and Mobile App",
-    tools: "Ecommerce, Mobile Experience, Order Management",
-    image: "/images/orrdr.png",
-    link: "https://orrdr.com",
+    title: "Instalearn",
+    category: "Landing Page",
+    description:
+      "A high-conversion landing page for an AI-powered learning platform, featuring modern UI components and seamless content delivery.",
+    tools: ["Next.js", "Tailwind CSS", "Framer Motion"],
+    image: "/images/instalearn.png",
+    link: "https://instalearnapp.com/",
   },
 ];
 
 const Work = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const slidesRef = useRef<(HTMLDivElement | null)[]>([]);
 
-  const goToSlide = useCallback(
-    (index: number) => {
-      if (isAnimating) return;
-      setIsAnimating(true);
-      setCurrentIndex(index);
-      setTimeout(() => setIsAnimating(false), 500);
-    },
-    [isAnimating]
-  );
+  useEffect(() => {
+    if (!sectionRef.current) return;
 
-  const goToPrev = useCallback(() => {
-    const newIndex =
-      currentIndex === 0 ? projects.length - 1 : currentIndex - 1;
-    goToSlide(newIndex);
-  }, [currentIndex, goToSlide]);
+    const slides = slidesRef.current.filter(Boolean) as HTMLDivElement[];
+    const totalSlides = slides.length;
 
-  const goToNext = useCallback(() => {
-    const newIndex =
-      currentIndex === projects.length - 1 ? 0 : currentIndex + 1;
-    goToSlide(newIndex);
-  }, [currentIndex, goToSlide]);
+    // Set first slide as active initially
+    slides[0]?.classList.add("work-slide-active");
+
+    const ctx = gsap.context(() => {
+      // Pin the entire work section
+      ScrollTrigger.create({
+        trigger: sectionRef.current,
+        start: "top top",
+        end: () => `+=${window.innerHeight * (totalSlides - 1)}`,
+        pin: true,
+        pinType: "transform",
+        pinSpacing: true,
+        scrub: window.innerWidth <= 1024 ? true : 0.5,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+        refreshPriority: 1,
+        onUpdate: (self) => {
+          // Calculate which slide should be active based on scroll progress
+          const progress = self.progress;
+          const activeIndex = Math.min(
+            Math.floor(progress * totalSlides),
+            totalSlides - 1
+          );
+
+          slides.forEach((slide, index) => {
+            if (index === activeIndex) {
+              slide.classList.add("work-slide-active");
+              slide.classList.remove("work-slide-exit");
+            } else if (index < activeIndex) {
+              slide.classList.remove("work-slide-active");
+              slide.classList.add("work-slide-exit");
+            } else {
+              slide.classList.remove("work-slide-active");
+              slide.classList.remove("work-slide-exit");
+            }
+          });
+        },
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <div className="work-section" id="work">
-      <div className="work-container section-container">
-        <h2>
-          My <span>Work</span>
-        </h2>
+    <div className="work-pinned-section" id="work" ref={sectionRef}>
+      <CursorGlow />
+      <div className="work-pinned-container section-container">
+        <div className="work-pinned-header">
+          <h2>
+            My <span>Work</span>
+          </h2>
+          <div className="work-counter">
+            <span className="work-counter-label">Selected Projects</span>
+          </div>
+        </div>
 
-        <div className="carousel-wrapper">
-          {/* Navigation Arrows */}
-          <button
-            className="carousel-arrow carousel-arrow-left"
-            onClick={goToPrev}
-            aria-label="Previous project"
-            data-cursor="disable"
-          >
-            <MdArrowBack />
-          </button>
-          <button
-            className="carousel-arrow carousel-arrow-right"
-            onClick={goToNext}
-            aria-label="Next project"
-            data-cursor="disable"
-          >
-            <MdArrowForward />
-          </button>
-
-          {/* Slides */}
-          <div className="carousel-track-container">
+        <div className="work-slides-viewport">
+          {projects.map((project, index) => (
             <div
-              className="carousel-track"
-              style={{
-                transform: `translateX(-${currentIndex * 100}%)`,
+              className={`work-slide ${index === 0 ? "work-slide-active" : ""}`}
+              key={index}
+              ref={(el) => {
+                slidesRef.current[index] = el;
               }}
             >
-              {projects.map((project, index) => (
-                <div className="carousel-slide" key={index}>
-                  <div className="carousel-content">
-                    <div className="carousel-info">
-                      <div className="carousel-number">
-                        <h3>0{index + 1}</h3>
-                      </div>
-                      <div className="carousel-details">
-                        <h4>{project.title}</h4>
-                        <p className="carousel-category">
-                          {project.category}
-                        </p>
-                        <div className="carousel-tools">
-                          <span className="tools-label">Tools & Features</span>
-                          <p>{project.tools}</p>
-                        </div>
+              <div className="work-slide-content">
+                <div className="work-slide-info">
+                  <div className="work-slide-number">
+                    <span>0{index + 1}</span>
+                    <div className="work-slide-divider" />
+                    <span className="work-slide-total">
+                      0{projects.length}
+                    </span>
+                  </div>
+                  <div className="work-slide-details">
+                    <p className="work-slide-category">{project.category}</p>
+                    <h3 className="work-slide-title">{project.title}</h3>
+                    <p className="work-slide-description">
+                      {project.description}
+                    </p>
+                    <div className="work-slide-tools">
+                      <span className="work-tools-label">Tech Stack</span>
+                      <div className="work-tools-tags">
+                        {project.tools.map((tool, i) => (
+                          <span className="work-tool-tag" key={i}>
+                            {tool}
+                          </span>
+                        ))}
                       </div>
                     </div>
-                    <div className="carousel-image-wrapper">
-                      <WorkImage
-                        image={project.image}
-                        alt={project.title}
-                        link={project.link}
-                      />
+                    <div className="work-slide-cta">
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="project-live-link"
+                        data-cursor="disable"
+                      >
+                        View Live Project{" "}
+                        <MdArrowForward className="link-icon" />
+                      </a>
                     </div>
                   </div>
                 </div>
-              ))}
+                <div className="work-slide-image">
+                  <WorkImage
+                    image={project.image}
+                    alt={project.title}
+                    link={project.link}
+                  />
+                </div>
+              </div>
             </div>
-          </div>
+          ))}
+        </div>
 
-          {/* Dot Indicators */}
-          <div className="carousel-dots">
-            {projects.map((_, index) => (
-              <button
-                key={index}
-                className={`carousel-dot ${index === currentIndex ? "carousel-dot-active" : ""
-                  }`}
-                onClick={() => goToSlide(index)}
-                aria-label={`Go to project ${index + 1}`}
-                data-cursor="disable"
-              />
-            ))}
-          </div>
+        {/* Progress indicator */}
+        <div className="work-scroll-hint">
+          <div className="work-scroll-hint-line" />
+          <span>Scroll to explore</span>
         </div>
       </div>
     </div>

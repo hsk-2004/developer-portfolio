@@ -10,14 +10,17 @@ export let smoother: ScrollSmoother;
 
 const Navbar = () => {
   useEffect(() => {
+    const isMobile = window.innerWidth <= 1024;
+    
     smoother = ScrollSmoother.create({
       wrapper: "#smooth-wrapper",
       content: "#smooth-content",
-      smooth: 1.7,
-      speed: 1.7,
+      smooth: isMobile ? 5 : 3,
+      speed: isMobile ? 0.7 : 0.8,
       effects: true,
       autoResize: true,
       ignoreMobileResize: true,
+      normalizeScroll: isMobile ? true : false,
     });
 
     smoother.scrollTop(0);
@@ -27,11 +30,15 @@ const Navbar = () => {
     links.forEach((elem) => {
       let element = elem as HTMLAnchorElement;
       element.addEventListener("click", (e) => {
-        if (window.innerWidth > 1024) {
-          e.preventDefault();
-          let elem = e.currentTarget as HTMLAnchorElement;
-          let section = elem.getAttribute("data-href");
-          smoother.scrollTo(section, true, "top top");
+        e.preventDefault();
+        let elem = e.currentTarget as HTMLAnchorElement;
+        let section = elem.getAttribute("data-href");
+        if (section) {
+          gsap.to(smoother, {
+            scrollTop: smoother.offset(section, "top top"),
+            duration: 2.5,
+            ease: "power2.inOut"
+          });
         }
       });
     });
@@ -43,16 +50,16 @@ const Navbar = () => {
     <>
       <div className="header">
         <a href="/#" className="navbar-title" data-cursor="disable">
-          AM
+          HS
         </a>
         <a
-          href="https://www.linkedin.com/in/akashrmalhotra/"
+          href="https://www.linkedin.com/in/harman-singh-681758347/"
           className="navbar-connect"
           data-cursor="disable"
           target="_blank"
           rel="noreferrer"
         >
-          linkedin.com/in/akashrmalhotra
+          linkedin.com/in/harman-singh-681758347
         </a>
         <ul>
           <li>
