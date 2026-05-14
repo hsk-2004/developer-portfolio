@@ -148,10 +148,10 @@
 }
 
 /* ========================================
-   RESUME GLASS BUTTON — BREAKS OUT OF BOX
+   RESUME GLASS BUTTON — BELOW THE BOX
    ======================================== */
 .about-actions {
-  margin-top: -28px;
+  margin-top: 30px;
   display: flex;
   justify-content: center;
   z-index: 20;
@@ -162,17 +162,17 @@
   align-items: center;
   gap: 16px;
   padding: 20px 48px;
-  background: rgba(138, 43, 226, 0.15);
+  background: rgba(255, 42, 42, 0.12);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1.5px solid rgba(138, 43, 226, 0.45);
+  border: 1.5px solid rgba(255, 42, 42, 0.45);
   border-radius: 60px;
   text-decoration: none;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   position: relative;
   overflow: hidden;
   box-shadow:
-    0 0 25px rgba(138, 43, 226, 0.3),
+    0 0 25px rgba(255, 42, 42, 0.25),
     0 10px 40px rgba(0, 0, 0, 0.4);
   animation: resumePulse 3s ease-in-out infinite;
 }
@@ -180,13 +180,13 @@
 @keyframes resumePulse {
   0%, 100% {
     box-shadow:
-      0 0 25px rgba(138, 43, 226, 0.3),
+      0 0 25px rgba(255, 42, 42, 0.25),
       0 10px 40px rgba(0, 0, 0, 0.4);
   }
   50% {
     box-shadow:
-      0 0 40px rgba(138, 43, 226, 0.5),
-      0 0 80px rgba(138, 43, 226, 0.2),
+      0 0 40px rgba(255, 42, 42, 0.45),
+      0 0 80px rgba(255, 42, 42, 0.15),
       0 10px 40px rgba(0, 0, 0, 0.4);
   }
 }
@@ -212,12 +212,12 @@
 }
 
 .resume-glass-btn:hover {
-  background: rgba(138, 43, 226, 0.3);
-  border-color: rgba(138, 43, 226, 0.7);
+  background: rgba(255, 42, 42, 0.25);
+  border-color: rgba(255, 42, 42, 0.7);
   transform: translateY(-6px) scale(1.05);
   box-shadow:
-    0 0 50px rgba(138, 43, 226, 0.6),
-    0 0 100px rgba(138, 43, 226, 0.2),
+    0 0 50px rgba(255, 42, 42, 0.5),
+    0 0 100px rgba(255, 42, 42, 0.15),
     0 15px 50px rgba(0, 0, 0, 0.5);
 }
 
