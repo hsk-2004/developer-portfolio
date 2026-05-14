@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { smoother } from "./Navbar";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./styles/MusicPlayer.css";
 
 const MusicPlayer: React.FC = () => {
@@ -22,11 +23,12 @@ const MusicPlayer: React.FC = () => {
         // Ensure smoother is active
         if (smoother) {
           smoother.paused(false);
+          ScrollTrigger.refresh(); // Sync all pinned offsets
           
           gsap.to(smoother, {
             scrollTop: smoother.offset("#contact", "top top"),
-            duration: 35, // Faster cinematic crawl
-            ease: "none",
+            duration: 45, // Balanced speed for stability
+            ease: "power1.inOut",
             overwrite: true,
             onComplete: () => setHasInteracted(true)
           });
