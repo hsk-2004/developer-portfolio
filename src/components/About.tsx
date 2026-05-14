@@ -19,6 +19,12 @@ const About = () => {
             <div className="skill-item"><span>Cloud & DevOps Workflows</span></div>
             <div className="skill-item"><span>AI-Integrated Products</span></div>
           </div>
+          <div className="about-actions">
+            <a href="/Harman_Singh_Resume.pdf" target="_blank" rel="noreferrer" className="resume-glass-btn">
+              <span className="btn-icon">📄</span>
+              <span className="btn-text">View Full Resume</span>
+            </a>
+          </div>
         </div>
       </div>
     </div>

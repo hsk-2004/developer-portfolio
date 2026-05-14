@@ -134,3 +134,86 @@
     gap: 10px;
   }
 }
+
+/* ========================================
+   RESUME GLASS BUTTON
+   ======================================== */
+.about-actions {
+  margin-top: 40px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.resume-glass-btn {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 16px 32px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.resume-glass-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.resume-glass-btn:hover::before {
+  left: 100%;
+}
+
+.resume-glass-btn:hover {
+  background: rgba(138, 43, 226, 0.15);
+  border-color: rgba(138, 43, 226, 0.4);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 
+    0 15px 40px rgba(138, 43, 226, 0.25),
+    0 0 20px rgba(138, 43, 226, 0.1);
+}
+
+.btn-icon {
+  font-size: 20px;
+}
+
+.btn-text {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+@media only screen and (max-width: 600px) {
+  .about-actions {
+    justify-content: center;
+  }
+  
+  .resume-glass-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 14px 24px;
+  }
+  
+  .btn-text {
+    font-size: 14px;
+  }
+}
