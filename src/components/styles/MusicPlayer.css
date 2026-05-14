@@ -1,85 +1,10 @@
 /* ========================================
-   FLOATING PROMPT — "Click for immersive experience"
-   ======================================== */
-.music-prompt {
-  position: fixed;
-  bottom: 90px;
-  left: 20px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  padding: 12px 22px;
-  border-radius: 50px;
-  cursor: pointer;
-  z-index: 10000;
-  animation: promptPulse 2.5s ease-in-out infinite, promptSlideIn 0.6s ease-out;
-  box-shadow:
-    0 0 20px rgba(138, 43, 226, 0.3),
-    0 8px 32px rgba(0, 0, 0, 0.4);
-  transition: all 0.3s ease;
-}
-
-.music-prompt:hover {
-  background: rgba(255, 255, 255, 0.15);
-  transform: translateY(-3px);
-  box-shadow:
-    0 0 30px rgba(138, 43, 226, 0.5),
-    0 12px 40px rgba(0, 0, 0, 0.5);
-}
-
-.prompt-icon {
-  font-size: 18px;
-  animation: iconBounce 1.5s ease-in-out infinite;
-}
-
-.prompt-text {
-  color: rgba(255, 255, 255, 0.9);
-  font-family: "Inter", sans-serif;
-  font-size: 13px;
-  letter-spacing: 0.5px;
-  font-weight: 500;
-}
-
-@keyframes promptPulse {
-  0%, 100% {
-    box-shadow:
-      0 0 20px rgba(138, 43, 226, 0.3),
-      0 8px 32px rgba(0, 0, 0, 0.4);
-  }
-  50% {
-    box-shadow:
-      0 0 35px rgba(138, 43, 226, 0.6),
-      0 8px 32px rgba(0, 0, 0, 0.4);
-  }
-}
-
-@keyframes promptSlideIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes iconBounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-3px); }
-}
-
-/* ========================================
-   MAIN PLAYER BUTTON
+   INTEGRATED MUSIC PLAYER
    ======================================== */
 .music-player {
   position: fixed;
   bottom: 28px;
-  left: 20px;
+  right: 20px;
   background: rgba(138, 43, 226, 0.2);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -91,42 +16,40 @@
   gap: 14px;
   cursor: pointer;
   z-index: 10000;
-  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   box-shadow:
-    0 0 30px rgba(138, 43, 226, 0.5),
-    0 0 60px rgba(138, 43, 226, 0.25),
+    0 0 30px rgba(138, 43, 226, 0.4),
     0 8px 32px rgba(0, 0, 0, 0.4);
   overflow: hidden;
-  animation: idleGlow 2s ease-in-out infinite;
 }
 
-@keyframes idleGlow {
+/* Aggressive pulse when waiting for interaction */
+.waiting {
+  animation: waitingPulse 2s ease-in-out infinite;
+  background: rgba(138, 43, 226, 0.3);
+  border-color: rgba(138, 43, 226, 0.8);
+  padding-right: 40px;
+}
+
+@keyframes waitingPulse {
   0%, 100% {
-    box-shadow:
-      0 0 30px rgba(138, 43, 226, 0.5),
-      0 0 60px rgba(138, 43, 226, 0.25),
-      0 8px 32px rgba(0, 0, 0, 0.4);
+    transform: scale(1);
+    box-shadow: 0 0 30px rgba(138, 43, 226, 0.4), 0 8px 32px rgba(0, 0, 0, 0.4);
   }
   50% {
-    box-shadow:
-      0 0 50px rgba(138, 43, 226, 0.7),
-      0 0 100px rgba(138, 43, 226, 0.4),
-      0 0 150px rgba(138, 43, 226, 0.15),
-      0 8px 32px rgba(0, 0, 0, 0.4);
+    transform: scale(1.05);
+    box-shadow: 0 0 60px rgba(138, 43, 226, 0.7), 0 8px 32px rgba(0, 0, 0, 0.4);
   }
 }
 
 .music-player:hover {
   background: rgba(138, 43, 226, 0.35);
-  transform: translateY(-5px) scale(1.05);
+  transform: translateY(-5px) scale(1.02);
   box-shadow:
     0 0 60px rgba(138, 43, 226, 0.8),
-    0 0 120px rgba(138, 43, 226, 0.4),
-    0 0 180px rgba(138, 43, 226, 0.2),
     0 12px 40px rgba(0, 0, 0, 0.5);
 }
 
-/* Glow ring behind the player when playing */
 .player-glow {
   position: absolute;
   inset: -2px;
@@ -134,13 +57,12 @@
   background: conic-gradient(
     from 0deg,
     transparent,
-    rgba(138, 43, 226, 0.5),
-    rgba(0, 200, 255, 0.4),
+    rgba(138, 43, 226, 0.6),
+    rgba(0, 200, 255, 0.5),
     transparent
   );
   opacity: 0;
   z-index: -1;
-  transition: opacity 0.4s ease;
 }
 
 .playing .player-glow {
@@ -155,35 +77,40 @@
 
 .playing {
   border-color: rgba(138, 43, 226, 0.6);
-  animation: playingGlow 1.5s ease-in-out infinite;
+  animation: playingGlow 2s ease-in-out infinite;
 }
 
 @keyframes playingGlow {
-  0%, 100% {
-    box-shadow:
-      0 0 40px rgba(138, 43, 226, 0.6),
-      0 0 80px rgba(138, 43, 226, 0.35),
-      0 8px 32px rgba(0, 0, 0, 0.4);
-  }
-  50% {
-    box-shadow:
-      0 0 70px rgba(138, 43, 226, 0.85),
-      0 0 140px rgba(138, 43, 226, 0.5),
-      0 0 200px rgba(138, 43, 226, 0.2),
-      0 8px 32px rgba(0, 0, 0, 0.4);
-  }
+  0%, 100% { box-shadow: 0 0 40px rgba(138, 43, 226, 0.5), 0 8px 32px rgba(0, 0, 0, 0.4); }
+  50% { box-shadow: 0 0 70px rgba(138, 43, 226, 0.7), 0 8px 32px rgba(0, 0, 0, 0.4); }
 }
 
 /* ========================================
-   TEXT
+   CONTENT & TEXT
    ======================================== */
+.player-content {
+  display: flex;
+  flex-direction: column;
+}
+
 .player-text {
-  color: rgba(255, 255, 255, 0.85);
+  color: #fff;
   font-family: "Inter", sans-serif;
   font-size: 13px;
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
   font-weight: 700;
   text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.prompt-icon {
+  font-size: 20px;
+  animation: iconBounce 1.5s ease-in-out infinite;
+}
+
+@keyframes iconBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
 }
 
 /* ========================================
@@ -198,10 +125,9 @@
 
 .bar {
   width: 4px;
-  background: linear-gradient(to top, rgba(138, 43, 226, 0.9), rgba(0, 200, 255, 1));
+  background: linear-gradient(to top, rgba(138, 43, 226, 1), rgba(0, 200, 255, 1));
   height: 5px;
   border-radius: 2px;
-  transition: height 0.2s ease;
 }
 
 .playing .bar {
@@ -224,20 +150,10 @@
    RESPONSIVE
    ======================================== */
 @media (max-width: 768px) {
-  .music-prompt {
-    bottom: 80px;
-    left: 12px;
-    padding: 10px 16px;
-  }
-
-  .prompt-text {
-    font-size: 11px;
-  }
-
   .music-player {
     bottom: 20px;
-    left: 12px;
-    padding: 10px 16px;
+    right: 12px;
+    padding: 14px 24px;
   }
 
   .player-text {
