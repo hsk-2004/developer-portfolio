@@ -72,6 +72,14 @@ const Navbar = () => {
         </ul>
         <div className="navbar-socials">
           <a
+            href="/HarmanSingh-DEV.pdf"
+            target="_blank"
+            rel="noreferrer"
+            className="navbar-resume-link"
+          >
+            RESUME
+          </a>
+          <a
             href="https://github.com/hsk-2004"
             target="_blank"
             rel="noreferrer"
