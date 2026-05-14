@@ -25,7 +25,7 @@ const MusicPlayer: React.FC = () => {
           
           gsap.to(smoother, {
             scrollTop: smoother.offset("#contact", "top top"),
-            duration: 60, // Very slow, cinematic crawl
+            duration: 35, // Faster cinematic crawl
             ease: "none",
             overwrite: true,
             onComplete: () => setHasInteracted(true)
