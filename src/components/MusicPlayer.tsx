@@ -34,7 +34,7 @@ const MusicPlayer: React.FC = () => {
           });
           
           // Stop auto-scroll if user interacts
-          const stopAutoScroll = (e: Event) => {
+          const stopAutoScroll = () => {
             // Kill the animation first
             gsap.killTweensOf(smoother);
             
