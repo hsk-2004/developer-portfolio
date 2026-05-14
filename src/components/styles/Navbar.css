@@ -6,12 +6,11 @@
   padding: 20px 0px;
   margin-bottom: -100px;
   box-sizing: border-box;
+  z-index: 9999;
+  align-items: center;
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
-  top: 0;
-  z-index: 9999;
-  align-items: center;
 }
 
 /* Navbar Social Icons */
@@ -19,6 +18,8 @@
   display: flex;
   align-items: center;
   gap: 6px;
+  position: absolute;
+  right: 0;
 }
 
 .navbar-social-link {
@@ -47,7 +48,7 @@
   font-size: 13px;
   display: flex;
   flex-direction: row;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   list-style: none;
   gap: 15px;
@@ -74,6 +75,8 @@
   font-weight: 700;
   font-size: 18px;
   letter-spacing: 0.2px;
+  position: absolute;
+  left: 0;
 }
 @media only screen and (min-width: 500px) {
   .header {
