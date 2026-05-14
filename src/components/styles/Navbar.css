@@ -124,40 +124,41 @@
 }
 @media only screen and (max-width: 600px) {
   .header {
-    padding: 15px 12px;
+    padding: 12px 15px;
+    justify-content: space-between;
   }
 
   .navbar-title {
-    font-size: 18px;
+    font-size: 16px;
+    margin-right: 0;
+    position: static;
   }
 
   .header ul {
-    gap: 12px;
+    gap: 8px;
+    position: static;
+    transform: none;
   }
 
   .header ul a {
-    font-size: 11px;
-    letter-spacing: 1px;
+    font-size: 10px;
+    letter-spacing: 0.5px;
   }
 
   .navbar-socials {
-    gap: 6px;
+    position: static;
+  }
+
+  /* Hide social icons on mobile navbar to save space */
+  .navbar-social-link {
+    display: none;
   }
 
   .navbar-resume-link {
-    padding: 6px 12px;
-    font-size: 10px;
-    letter-spacing: 1px;
-    margin-right: 4px;
-  }
-
-  .nav-social-icon {
-    font-size: 14px;
-  }
-
-  .social-icon-wrapper {
-    width: 30px;
-    height: 30px;
+    padding: 5px 10px;
+    font-size: 9px;
+    letter-spacing: 0.5px;
+    margin-right: 0;
   }
 }
 @media only screen and (min-width: 1200px) {
