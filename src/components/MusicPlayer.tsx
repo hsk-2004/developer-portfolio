@@ -19,8 +19,10 @@ const MusicPlayer: React.FC = () => {
           console.error("Playback failed:", err);
         });
 
-        // Cinematic Auto-Scroll
+        // Ensure smoother is active
         if (smoother) {
+          smoother.paused(false);
+          
           gsap.to(smoother, {
             scrollTop: smoother.offset("#contact", "top top"),
             duration: 60, // Very slow, cinematic crawl
@@ -28,7 +30,7 @@ const MusicPlayer: React.FC = () => {
             overwrite: true,
             onComplete: () => setHasInteracted(true)
           });
-
+          
           // Stop auto-scroll if user interacts
           const stopAutoScroll = () => {
             gsap.killTweensOf(smoother);
@@ -37,8 +39,8 @@ const MusicPlayer: React.FC = () => {
             window.removeEventListener("mousedown", stopAutoScroll);
           };
 
-          window.addEventListener("wheel", stopAutoScroll);
-          window.addEventListener("touchmove", stopAutoScroll);
+          window.addEventListener("wheel", stopAutoScroll, { passive: true });
+          window.addEventListener("touchmove", stopAutoScroll, { passive: true });
           window.addEventListener("mousedown", stopAutoScroll);
         }
       }
@@ -54,6 +56,7 @@ const MusicPlayer: React.FC = () => {
         audioRef.current.play().then(() => {
           setIsPlaying(true);
           setHasInteracted(true);
+          if (smoother) smoother.paused(false);
         }).catch(() => {
           // Fallback to manual click
         });
