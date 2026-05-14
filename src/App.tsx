@@ -10,11 +10,15 @@ const App = () => {
   return (
     <>
       <LoadingProvider>
-        <MusicPlayer />
-        <ScrollSequence />
-        <Suspense>
-          <MainContainer />
-        </Suspense>
+        <div id="smooth-wrapper">
+          <MusicPlayer />
+          <div id="smooth-content">
+            <ScrollSequence />
+            <Suspense>
+              <MainContainer />
+            </Suspense>
+          </div>
+        </div>
       </LoadingProvider>
     </>
   );
