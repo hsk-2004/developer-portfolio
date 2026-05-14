@@ -34,16 +34,25 @@ const MusicPlayer: React.FC = () => {
       window.removeEventListener("click", handleFirstInteraction);
       window.removeEventListener("keydown", handleFirstInteraction);
       window.removeEventListener("scroll", handleFirstInteraction);
+      window.removeEventListener("wheel", handleFirstInteraction);
+      window.removeEventListener("touchstart", handleFirstInteraction);
+      window.removeEventListener("touchmove", handleFirstInteraction);
     };
 
     window.addEventListener("click", handleFirstInteraction);
     window.addEventListener("keydown", handleFirstInteraction);
     window.addEventListener("scroll", handleFirstInteraction);
+    window.addEventListener("wheel", handleFirstInteraction);
+    window.addEventListener("touchstart", handleFirstInteraction);
+    window.addEventListener("touchmove", handleFirstInteraction);
 
     return () => {
       window.removeEventListener("click", handleFirstInteraction);
       window.removeEventListener("keydown", handleFirstInteraction);
       window.removeEventListener("scroll", handleFirstInteraction);
+      window.removeEventListener("wheel", handleFirstInteraction);
+      window.removeEventListener("touchstart", handleFirstInteraction);
+      window.removeEventListener("touchmove", handleFirstInteraction);
     };
   }, [isPlaying]);
 
