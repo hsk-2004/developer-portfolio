@@ -129,7 +129,7 @@ const ScrollSequence = () => {
           trigger: "#smooth-wrapper",
           start: "top top",
           end: "30% bottom",
-          scrub: 0.8,
+          scrub: 0.5,
         },
         onUpdate: render,
       });
