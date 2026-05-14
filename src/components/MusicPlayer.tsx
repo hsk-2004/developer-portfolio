@@ -10,10 +10,8 @@ const MusicPlayer: React.FC = () => {
       if (isPlaying) {
         audioRef.current.pause();
       } else {
-        // If it's at the very beginning, jump to 10 seconds
-        if (audioRef.current.currentTime === 0) {
-          audioRef.current.currentTime = 10;
-        }
+        // Always reset to 10 seconds whenever you press play
+        audioRef.current.currentTime = 10;
         audioRef.current.play().catch((err) => {
           console.error("Playback failed:", err);
         });
