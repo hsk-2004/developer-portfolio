@@ -12,8 +12,8 @@ const App = () => {
       <LoadingProvider>
         <div id="smooth-wrapper">
           <MusicPlayer />
+          <ScrollSequence />
           <div id="smooth-content">
-            <ScrollSequence />
             <Suspense>
               <MainContainer />
             </Suspense>
