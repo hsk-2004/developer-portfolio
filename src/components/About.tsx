@@ -23,7 +23,7 @@ const About = () => {
           </div>
         </div>
         <div className="about-actions">
-          <a href="/Harman_Singh_Resume.pdf" target="_blank" rel="noreferrer" className="resume-glass-btn">
+          <a href="/HarmanSingh-DEV.pdf" target="_blank" rel="noreferrer" className="resume-glass-btn">
             <span className="btn-icon">📄</span>
             <span className="btn-text">View Resume</span>
             <span className="btn-arrow">→</span>
