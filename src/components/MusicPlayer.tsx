@@ -35,7 +35,10 @@ const MusicPlayer: React.FC = () => {
           
           // Stop auto-scroll if user interacts
           const stopAutoScroll = () => {
+            const currentScroll = smoother.scrollTop();
             gsap.killTweensOf(smoother);
+            smoother.scrollTop(currentScroll); // Instant sync to current position
+            
             window.removeEventListener("wheel", stopAutoScroll);
             window.removeEventListener("touchmove", stopAutoScroll);
             window.removeEventListener("mousedown", stopAutoScroll);
