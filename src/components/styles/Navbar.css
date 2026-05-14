@@ -122,6 +122,44 @@
     display: block;
   }
 }
+@media only screen and (max-width: 600px) {
+  .header {
+    padding: 15px 12px;
+  }
+
+  .navbar-title {
+    font-size: 18px;
+  }
+
+  .header ul {
+    gap: 12px;
+  }
+
+  .header ul a {
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
+
+  .navbar-socials {
+    gap: 6px;
+  }
+
+  .navbar-resume-link {
+    padding: 6px 12px;
+    font-size: 10px;
+    letter-spacing: 1px;
+    margin-right: 4px;
+  }
+
+  .nav-social-icon {
+    font-size: 14px;
+  }
+
+  .social-icon-wrapper {
+    width: 30px;
+    height: 30px;
+  }
+}
 @media only screen and (min-width: 1200px) {
   .header {
     padding: 35px 0px;
