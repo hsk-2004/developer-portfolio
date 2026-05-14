@@ -65,16 +65,16 @@ const Work = () => {
       ScrollTrigger.create({
         trigger: sectionRef.current,
         start: "top top",
-        end: () => `+=${window.innerHeight * (totalSlides - 1)}`,
+        end: () => `+=${window.innerHeight * (totalSlides + 0.5)}`, // Extra padding for smoother transition out
         pin: true,
         pinType: "transform",
         pinSpacing: true,
-        scrub: window.innerWidth <= 1024 ? true : 0.5,
+        scrub: 1.2, // Slightly more lag for weight and smoothness
         anticipatePin: 1,
         invalidateOnRefresh: true,
         refreshPriority: 1,
         onUpdate: (self) => {
-          // Calculate which slide should be active based on scroll progress
+          // Calculate active index with a slight buffer to prevent flickering
           const progress = self.progress;
           const activeIndex = Math.min(
             Math.floor(progress * totalSlides),
