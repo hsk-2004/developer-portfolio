@@ -136,29 +136,59 @@
 }
 
 /* ========================================
-   RESUME GLASS BUTTON
+   ABOUT WRAPPER
+   ======================================== */
+.about-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: var(--cWidth);
+  max-width: 900px;
+}
+
+/* ========================================
+   RESUME GLASS BUTTON — BREAKS OUT OF BOX
    ======================================== */
 .about-actions {
-  margin-top: 40px;
+  margin-top: -28px;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
+  z-index: 20;
 }
 
 .resume-glass-btn {
   display: flex;
   align-items: center;
-  gap: 15px;
-  padding: 16px 32px;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
+  gap: 16px;
+  padding: 20px 48px;
+  background: rgba(138, 43, 226, 0.15);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1.5px solid rgba(138, 43, 226, 0.45);
+  border-radius: 60px;
   text-decoration: none;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   position: relative;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  box-shadow:
+    0 0 25px rgba(138, 43, 226, 0.3),
+    0 10px 40px rgba(0, 0, 0, 0.4);
+  animation: resumePulse 3s ease-in-out infinite;
+}
+
+@keyframes resumePulse {
+  0%, 100% {
+    box-shadow:
+      0 0 25px rgba(138, 43, 226, 0.3),
+      0 10px 40px rgba(0, 0, 0, 0.4);
+  }
+  50% {
+    box-shadow:
+      0 0 40px rgba(138, 43, 226, 0.5),
+      0 0 80px rgba(138, 43, 226, 0.2),
+      0 10px 40px rgba(0, 0, 0, 0.4);
+  }
 }
 
 .resume-glass-btn::before {
@@ -171,10 +201,10 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.12),
     transparent
   );
-  transition: 0.5s;
+  transition: 0.6s;
 }
 
 .resume-glass-btn:hover::before {
@@ -182,38 +212,50 @@
 }
 
 .resume-glass-btn:hover {
-  background: rgba(138, 43, 226, 0.15);
-  border-color: rgba(138, 43, 226, 0.4);
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 
-    0 15px 40px rgba(138, 43, 226, 0.25),
-    0 0 20px rgba(138, 43, 226, 0.1);
+  background: rgba(138, 43, 226, 0.3);
+  border-color: rgba(138, 43, 226, 0.7);
+  transform: translateY(-6px) scale(1.05);
+  box-shadow:
+    0 0 50px rgba(138, 43, 226, 0.6),
+    0 0 100px rgba(138, 43, 226, 0.2),
+    0 15px 50px rgba(0, 0, 0, 0.5);
 }
 
 .btn-icon {
-  font-size: 20px;
+  font-size: 22px;
 }
 
 .btn-text {
   color: #fff;
   font-size: 16px;
-  font-weight: 600;
-  letter-spacing: 1px;
+  font-weight: 700;
+  letter-spacing: 2px;
   text-transform: uppercase;
+}
+
+.btn-arrow {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 20px;
+  transition: transform 0.3s ease;
+}
+
+.resume-glass-btn:hover .btn-arrow {
+  transform: translateX(5px);
+  color: #fff;
 }
 
 @media only screen and (max-width: 600px) {
   .about-actions {
     justify-content: center;
+    padding: 0 15px;
   }
-  
+
   .resume-glass-btn {
-    width: 100%;
-    justify-content: center;
-    padding: 14px 24px;
+    padding: 16px 32px;
   }
-  
+
   .btn-text {
-    font-size: 14px;
+    font-size: 13px;
+    letter-spacing: 1.5px;
   }
 }
