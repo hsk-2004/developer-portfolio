@@ -20,6 +20,33 @@ const MusicPlayer: React.FC = () => {
     }
   };
 
+  useEffect(() => {
+    const handleFirstInteraction = () => {
+      if (!isPlaying && audioRef.current) {
+        audioRef.current.currentTime = 10;
+        audioRef.current.play().then(() => {
+          setIsPlaying(true);
+        }).catch(() => {
+          // If it still fails, we just wait for the user to click the player button
+        });
+      }
+      // Remove listeners after first interaction
+      window.removeEventListener("click", handleFirstInteraction);
+      window.removeEventListener("keydown", handleFirstInteraction);
+      window.removeEventListener("scroll", handleFirstInteraction);
+    };
+
+    window.addEventListener("click", handleFirstInteraction);
+    window.addEventListener("keydown", handleFirstInteraction);
+    window.addEventListener("scroll", handleFirstInteraction);
+
+    return () => {
+      window.removeEventListener("click", handleFirstInteraction);
+      window.removeEventListener("keydown", handleFirstInteraction);
+      window.removeEventListener("scroll", handleFirstInteraction);
+    };
+  }, [isPlaying]);
+
   return (
     <div className={`music-player ${isPlaying ? "playing" : ""}`} onClick={togglePlay}>
       <audio ref={audioRef} src="/nonstop.mp3" loop />
