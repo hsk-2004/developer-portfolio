@@ -4,7 +4,6 @@ import Career from "./Career";
 import Contact from "./Contact";
 import Landing from "./Landing";
 import Navbar from "./Navbar";
-import SocialIcons from "./SocialIcons";
 import TechDetails from "./TechDetails";
 import WhatIDo from "./WhatIDo";
 import Work from "./Work";
@@ -32,7 +31,6 @@ const MainContainer = ({ children }: PropsWithChildren) => {
   return (
     <div className="container-main">
       <Navbar />
-      <SocialIcons />
       {isDesktopView && children}
       <div id="smooth-wrapper">
         <div id="smooth-content">

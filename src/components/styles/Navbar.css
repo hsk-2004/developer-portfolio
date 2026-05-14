@@ -11,6 +11,37 @@
   transform: translateX(-50%);
   top: 0;
   z-index: 9999;
+  align-items: center;
+}
+
+/* Navbar Social Icons */
+.navbar-socials {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.navbar-social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 15px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.navbar-social-link:hover {
+  background: rgba(138, 43, 226, 0.25);
+  border-color: rgba(138, 43, 226, 0.5);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(138, 43, 226, 0.4);
 }
 .header ul {
   font-size: 11px;

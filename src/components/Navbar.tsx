@@ -3,6 +3,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HoverLinks from "./HoverLinks";
 import { gsap } from "gsap";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
+import { FaGithub, FaInstagram, FaLinkedinIn } from "react-icons/fa6";
 import "./styles/Navbar.css";
 
 gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
@@ -78,6 +79,35 @@ const Navbar = () => {
             </a>
           </li>
         </ul>
+        <div className="navbar-socials">
+          <a
+            href="https://github.com/hsk-2004"
+            target="_blank"
+            rel="noreferrer"
+            data-cursor="disable"
+            className="navbar-social-link"
+          >
+            <FaGithub />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/harman-singh-681758347/"
+            target="_blank"
+            rel="noreferrer"
+            data-cursor="disable"
+            className="navbar-social-link"
+          >
+            <FaLinkedinIn />
+          </a>
+          <a
+            href="https://www.instagram.com/_xhskx_/"
+            target="_blank"
+            rel="noreferrer"
+            data-cursor="disable"
+            className="navbar-social-link"
+          >
+            <FaInstagram />
+          </a>
+        </div>
       </div>
 
       <div className="landing-circle1"></div>
