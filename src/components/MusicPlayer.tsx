@@ -1,4 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
+import { smoother } from "./Navbar";
+import { gsap } from "gsap";
 import "./styles/MusicPlayer.css";
 
 const MusicPlayer: React.FC = () => {
@@ -10,11 +12,35 @@ const MusicPlayer: React.FC = () => {
     if (audioRef.current) {
       if (isPlaying) {
         audioRef.current.pause();
+        gsap.killTweensOf(smoother); // Stop auto-scroll if paused
       } else {
         audioRef.current.currentTime = 10;
         audioRef.current.play().catch((err) => {
           console.error("Playback failed:", err);
         });
+
+        // Cinematic Auto-Scroll
+        if (smoother) {
+          gsap.to(smoother, {
+            scrollTop: smoother.offset("#contact", "top top"),
+            duration: 60, // Very slow, cinematic crawl
+            ease: "none",
+            overwrite: true,
+            onComplete: () => setHasInteracted(true)
+          });
+
+          // Stop auto-scroll if user interacts
+          const stopAutoScroll = () => {
+            gsap.killTweensOf(smoother);
+            window.removeEventListener("wheel", stopAutoScroll);
+            window.removeEventListener("touchmove", stopAutoScroll);
+            window.removeEventListener("mousedown", stopAutoScroll);
+          };
+
+          window.addEventListener("wheel", stopAutoScroll);
+          window.addEventListener("touchmove", stopAutoScroll);
+          window.addEventListener("mousedown", stopAutoScroll);
+        }
       }
       setIsPlaying(!isPlaying);
       setHasInteracted(true);
