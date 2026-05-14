@@ -16,12 +16,12 @@ const Navbar = () => {
     smoother = ScrollSmoother.create({
       wrapper: "#smooth-wrapper",
       content: "#smooth-content",
-      smooth: isMobile ? 2 : 1.5,
-      speed: isMobile ? 0.8 : 1,
+      smooth: isMobile ? 0.8 : 1.5,
+      speed: isMobile ? 1.2 : 1,
       effects: true,
       autoResize: true,
       ignoreMobileResize: true,
-      normalizeScroll: isMobile ? true : false,
+      normalizeScroll: isMobile ? { allowNestedScroll: true } : false,
     });
 
     smoother.scrollTop(0);
