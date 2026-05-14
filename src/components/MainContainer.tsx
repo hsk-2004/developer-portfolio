@@ -3,7 +3,6 @@ import About from "./About";
 import Career from "./Career";
 import Contact from "./Contact";
 import Landing from "./Landing";
-import Navbar from "./Navbar";
 import TechDetails from "./TechDetails";
 import WhatIDo from "./WhatIDo";
 import Work from "./Work";
@@ -30,26 +29,19 @@ const MainContainer = ({ children }: PropsWithChildren) => {
 
   return (
     <div className="container-main">
-      <Navbar />
       {isDesktopView && children}
-      <div id="smooth-wrapper">
-        <div id="smooth-content">
-          <div className="container-main">
-            <Landing>{!isDesktopView && children}</Landing>
-            <About />
-            <WhatIDo />
-            <Career />
-            <Work />
-            {isDesktopView && (
-              <Suspense fallback={<div>Loading....</div>}>
-                <TechStack />
-              </Suspense>
-            )}
-            <TechDetails />
-            <Contact />
-          </div>
-        </div>
-      </div>
+      <Landing>{!isDesktopView && children}</Landing>
+      <About />
+      <WhatIDo />
+      <Career />
+      <Work />
+      {isDesktopView && (
+        <Suspense fallback={<div>Loading....</div>}>
+          <TechStack />
+        </Suspense>
+      )}
+      <TechDetails />
+      <Contact />
     </div>
   );
 };

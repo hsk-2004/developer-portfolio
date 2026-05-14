@@ -5,12 +5,14 @@ import MainContainer from "./components/MainContainer";
 import ScrollSequence from "./components/ScrollSequence";
 import { LoadingProvider } from "./context/LoadingProvider";
 import MusicPlayer from "./components/MusicPlayer";
+import Navbar from "./components/Navbar";
 
 const App = () => {
   return (
     <>
       <LoadingProvider>
         <div id="smooth-wrapper">
+          <Navbar />
           <MusicPlayer />
           <ScrollSequence />
           <div id="smooth-content">

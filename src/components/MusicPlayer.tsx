@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import { smoother } from "./Navbar";
 import "./styles/MusicPlayer.css";
 
@@ -23,34 +23,6 @@ const MusicPlayer: React.FC = () => {
       setHasInteracted(true);
     }
   };
-
-  useEffect(() => {
-    const handleFirstInteraction = () => {
-      if (!isPlaying && audioRef.current && !hasInteracted) {
-        audioRef.current.currentTime = 10;
-        audioRef.current.play().then(() => {
-          setIsPlaying(true);
-          setHasInteracted(true);
-          if (smoother) smoother.paused(false);
-        }).catch(() => {
-          // Fallback to manual click
-        });
-      }
-      window.removeEventListener("scroll", handleFirstInteraction);
-      window.removeEventListener("wheel", handleFirstInteraction);
-      window.removeEventListener("touchstart", handleFirstInteraction);
-    };
-
-    window.addEventListener("scroll", handleFirstInteraction);
-    window.addEventListener("wheel", handleFirstInteraction);
-    window.addEventListener("touchstart", handleFirstInteraction);
-
-    return () => {
-      window.removeEventListener("scroll", handleFirstInteraction);
-      window.removeEventListener("wheel", handleFirstInteraction);
-      window.removeEventListener("touchstart", handleFirstInteraction);
-    };
-  }, [isPlaying, hasInteracted]);
 
   return (
     <div
