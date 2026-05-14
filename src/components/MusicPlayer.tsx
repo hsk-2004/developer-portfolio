@@ -66,7 +66,7 @@ const MusicPlayer: React.FC = () => {
 
       <div className="player-content">
         <span className="player-text">
-          {isPlaying ? "NOW PLAYING" : hasInteracted ? "PAUSED" : "CLICK FOR IMMERSIVE EXPERIENCE"}
+          {isPlaying ? "NOW PLAYING" : "CLICK FOR IMMERSIVE EXPERIENCE"}
         </span>
       </div>
 
