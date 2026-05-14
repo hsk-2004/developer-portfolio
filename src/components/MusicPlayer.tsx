@@ -34,19 +34,24 @@ const MusicPlayer: React.FC = () => {
           });
           
           // Stop auto-scroll if user interacts
-          const stopAutoScroll = () => {
-            const currentScroll = smoother.scrollTop();
+          const stopAutoScroll = (e: Event) => {
+            // Kill the animation first
             gsap.killTweensOf(smoother);
-            smoother.scrollTop(currentScroll); // Instant sync to current position
             
-            window.removeEventListener("wheel", stopAutoScroll);
-            window.removeEventListener("touchmove", stopAutoScroll);
-            window.removeEventListener("mousedown", stopAutoScroll);
+            // Get the current visual position and lock it in
+            const currentY = smoother.scrollTop();
+            smoother.scrollTop(currentY);
+            
+            // Clean up listeners
+            window.removeEventListener("wheel", stopAutoScroll, { capture: true });
+            window.removeEventListener("touchmove", stopAutoScroll, { capture: true });
+            window.removeEventListener("mousedown", stopAutoScroll, { capture: true });
           };
 
-          window.addEventListener("wheel", stopAutoScroll, { passive: true });
-          window.addEventListener("touchmove", stopAutoScroll, { passive: true });
-          window.addEventListener("mousedown", stopAutoScroll);
+          // Use capture phase to catch the interaction before the smoother processes it
+          window.addEventListener("wheel", stopAutoScroll, { passive: true, capture: true });
+          window.addEventListener("touchmove", stopAutoScroll, { passive: true, capture: true });
+          window.addEventListener("mousedown", stopAutoScroll, { capture: true });
         }
       }
       setIsPlaying(!isPlaying);
