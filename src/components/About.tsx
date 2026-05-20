@@ -1,10 +1,17 @@
 import "./styles/About.css";
+import ElectricBorder from './ElectricBorder';
 
 const About = () => {
   return (
     <div className="about-section" id="about">
       <div className="about-wrapper">
-        <div className="about-container">
+        <ElectricBorder
+          color="#ff2a2a"
+          speed={1}
+          chaos={0.12}
+          borderRadius={20}
+          className="about-container"
+        >
           <div className="about-me">
             <h3 className="about-title">About Me</h3>
             <h2 className="about-tagline">Results-Driven Full Stack Engineer</h2>
@@ -21,7 +28,7 @@ const About = () => {
               <div className="skill-item"><span>AI-Integrated Products</span></div>
             </div>
           </div>
-        </div>
+        </ElectricBorder>
         <div className="about-actions">
           <a href="/HarmanSingh-DEV.pdf" target="_blank" rel="noreferrer" className="resume-glass-btn">
             <span className="btn-icon">📄</span>

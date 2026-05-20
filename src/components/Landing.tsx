@@ -53,21 +53,13 @@ const Landing = ({ children }: PropsWithChildren) => {
               Hello! I'm
             </motion.p>
             <motion.h1 variants={itemVariants}>
-              <motion.span
-                animate={{ y: [0, -15, 0], rotate: [0, -2, 0] }}
-                transition={floatingTransition}
-                style={{ display: "inline-block" }}
-              >
+              <span style={{ display: "inline-block" }}>
                 HARMAN
-              </motion.span>
+              </span>
               <br />
-              <motion.span
-                animate={{ y: [0, 15, 0], rotate: [0, 2, 0] }}
-                transition={{ ...floatingTransition, delay: 0.5 }}
-                style={{ display: "inline-block", color: "#ff2a2a", fontWeight: "800" }}
-              >
+              <span style={{ display: "inline-block", color: "#ff2a2a", fontWeight: "800" }}>
                 SINGH
-              </motion.span>
+              </span>
             </motion.h1>
           </div>
           <div className="landing-info">
