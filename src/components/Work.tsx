@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./styles/Work.css";
 import WorkImage from "./WorkImage";
 import CursorGlow from "./CursorGlow";
@@ -50,31 +50,37 @@ const projects = [
 const Work = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const slidesRef = useRef<(HTMLDivElement | null)[]>([]);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
 
   useEffect(() => {
-    if (!sectionRef.current) return;
+    const handleResize = () => setIsMobile(window.innerWidth <= 1024);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // ── Desktop: pinned scroll-driven slides ──
+  useEffect(() => {
+    if (isMobile || !sectionRef.current) return;
 
     const slides = slidesRef.current.filter(Boolean) as HTMLDivElement[];
     const totalSlides = slides.length;
+    const stableVH = document.documentElement.clientHeight;
 
-    // Set first slide as active initially
     slides[0]?.classList.add("work-slide-active");
 
     const ctx = gsap.context(() => {
-      // Pin the entire work section
       ScrollTrigger.create({
         trigger: sectionRef.current,
         start: "top top",
-        end: () => `+=${window.innerHeight * (totalSlides - 1)}`,
+        end: () => `+=${stableVH * (totalSlides - 1)}`,
         pin: true,
         pinType: "transform",
         pinSpacing: true,
-        scrub: window.innerWidth <= 1024 ? true : 0.5,
+        scrub: 0.5,
         anticipatePin: 1,
         invalidateOnRefresh: true,
         refreshPriority: 1,
         onUpdate: (self) => {
-          // Calculate which slide should be active based on scroll progress
           const progress = self.progress;
           const activeIndex = Math.min(
             Math.floor(progress * totalSlides),
@@ -98,12 +104,126 @@ const Work = () => {
     }, sectionRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [isMobile]);
 
+  // ── Mobile: simple fade-in cards (NO pinning at all) ──
+  useEffect(() => {
+    if (!isMobile) return;
+
+    const cards = slidesRef.current.filter(Boolean) as HTMLDivElement[];
+
+    const ctx = gsap.context(() => {
+      cards.forEach((card) => {
+        gsap.fromTo(
+          card,
+          { opacity: 0, y: 40 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: card,
+              start: "top 85%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, [isMobile]);
+
+  // ── Desktop layout: pinned with absolute-positioned slides ──
+  if (!isMobile) {
+    return (
+      <div className="work-pinned-section" id="work" ref={sectionRef}>
+        <CursorGlow />
+        <div className="work-pinned-container section-container">
+          <div className="work-pinned-header">
+            <h2>
+              My <span>Work</span>
+            </h2>
+            <div className="work-counter">
+              <span className="work-counter-label">Selected Projects</span>
+            </div>
+          </div>
+
+          <div className="work-slides-viewport">
+            {projects.map((project, index) => (
+              <div
+                className={`work-slide ${index === 0 ? "work-slide-active" : ""}`}
+                key={index}
+                ref={(el) => {
+                  slidesRef.current[index] = el;
+                }}
+              >
+                <div className="work-slide-content">
+                  <div className="work-slide-info">
+                    <div className="work-slide-number">
+                      <span>0{index + 1}</span>
+                      <div className="work-slide-divider" />
+                      <span className="work-slide-total">
+                        0{projects.length}
+                      </span>
+                    </div>
+                    <div className="work-slide-details">
+                      <p className="work-slide-category">{project.category}</p>
+                      <h3 className="work-slide-title">{project.title}</h3>
+                      <p className="work-slide-description">
+                        {project.description}
+                      </p>
+                      <div className="work-slide-tools">
+                        <span className="work-tools-label">Tech Stack</span>
+                        <div className="work-tools-tags">
+                          {project.tools.map((tool, i) => (
+                            <span className="work-tool-tag" key={i}>
+                              {tool}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="work-slide-cta">
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="project-live-link"
+                          data-cursor="disable"
+                        >
+                          View Live Project{" "}
+                          <MdArrowForward className="link-icon" />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="work-slide-image">
+                    <WorkImage
+                      image={project.image}
+                      alt={project.title}
+                      link={project.link}
+                    />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Progress indicator */}
+          <div className="work-scroll-hint">
+            <div className="work-scroll-hint-line" />
+            <span>Scroll to explore</span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // ── Mobile layout: normal vertical card list (NO pinning) ──
   return (
-    <div className="work-pinned-section" id="work" ref={sectionRef}>
-      <CursorGlow />
-      <div className="work-pinned-container section-container">
+    <div className="work-mobile-section" id="work" ref={sectionRef}>
+      <div className="work-mobile-container section-container">
         <div className="work-pinned-header">
           <h2>
             My <span>Work</span>
@@ -113,70 +233,60 @@ const Work = () => {
           </div>
         </div>
 
-        <div className="work-slides-viewport">
+        <div className="work-mobile-list">
           {projects.map((project, index) => (
             <div
-              className={`work-slide ${index === 0 ? "work-slide-active" : ""}`}
+              className="work-mobile-card"
               key={index}
               ref={(el) => {
                 slidesRef.current[index] = el;
               }}
             >
-              <div className="work-slide-content">
-                <div className="work-slide-info">
-                  <div className="work-slide-number">
-                    <span>0{index + 1}</span>
-                    <div className="work-slide-divider" />
-                    <span className="work-slide-total">
-                      0{projects.length}
-                    </span>
-                  </div>
-                  <div className="work-slide-details">
-                    <p className="work-slide-category">{project.category}</p>
-                    <h3 className="work-slide-title">{project.title}</h3>
-                    <p className="work-slide-description">
-                      {project.description}
-                    </p>
-                    <div className="work-slide-tools">
-                      <span className="work-tools-label">Tech Stack</span>
-                      <div className="work-tools-tags">
-                        {project.tools.map((tool, i) => (
-                          <span className="work-tool-tag" key={i}>
-                            {tool}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="work-slide-cta">
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="project-live-link"
-                        data-cursor="disable"
-                      >
-                        View Live Project{" "}
-                        <MdArrowForward className="link-icon" />
-                      </a>
-                    </div>
+              <div className="work-mobile-card-image">
+                <WorkImage
+                  image={project.image}
+                  alt={project.title}
+                  link={project.link}
+                />
+              </div>
+              <div className="work-mobile-card-info">
+                <div className="work-slide-number">
+                  <span>0{index + 1}</span>
+                  <div className="work-slide-divider" />
+                  <span className="work-slide-total">
+                    0{projects.length}
+                  </span>
+                </div>
+                <p className="work-slide-category">{project.category}</p>
+                <h3 className="work-slide-title">{project.title}</h3>
+                <p className="work-slide-description">
+                  {project.description}
+                </p>
+                <div className="work-slide-tools">
+                  <span className="work-tools-label">Tech Stack</span>
+                  <div className="work-tools-tags">
+                    {project.tools.map((tool, i) => (
+                      <span className="work-tool-tag" key={i}>
+                        {tool}
+                      </span>
+                    ))}
                   </div>
                 </div>
-                <div className="work-slide-image">
-                  <WorkImage
-                    image={project.image}
-                    alt={project.title}
-                    link={project.link}
-                  />
+                <div className="work-slide-cta">
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="project-live-link"
+                    data-cursor="disable"
+                  >
+                    View Live Project{" "}
+                    <MdArrowForward className="link-icon" />
+                  </a>
                 </div>
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Progress indicator */}
-        <div className="work-scroll-hint">
-          <div className="work-scroll-hint-line" />
-          <span>Scroll to explore</span>
         </div>
       </div>
     </div>

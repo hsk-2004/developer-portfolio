@@ -17,11 +17,11 @@ const Navbar = () => {
       wrapper: "#smooth-wrapper",
       content: "#smooth-content",
       smooth: isMobile ? 0.8 : 1.5,
-      speed: isMobile ? 1.2 : 1,
+      speed: 1,
       effects: true,
       autoResize: true,
       ignoreMobileResize: true,
-      normalizeScroll: isMobile ? { allowNestedScroll: true } : false,
+      normalizeScroll: false,
     });
 
     smoother.scrollTop(0);

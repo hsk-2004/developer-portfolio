@@ -295,6 +295,10 @@
 .work-image img {
   max-width: 100%;
   max-height: 380px;
+  /* height:auto keeps the width/height attributes as an aspect-ratio space
+     reservation (prevents layout shift when the image loads) without forcing
+     the attribute height — actual size is still driven by max-width/max-height */
+  height: auto;
   border-radius: 8px;
   object-fit: contain;
 }
@@ -406,127 +410,175 @@
   }
 }
 
+/* ── Mobile Card Layout (≤1024px — NO pinning) ── */
+.work-mobile-section {
+  position: relative;
+  z-index: 1;
+  background-color: var(--backgroundColor);
+  width: 100%;
+  padding: 60px 0 40px;
+}
+
+.work-mobile-container {
+  margin: auto;
+}
+
+.work-mobile-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.work-mobile-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.4s ease, border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.work-mobile-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 42, 42, 0.3);
+  box-shadow: 0 18px 50px -12px rgba(0, 0, 0, 0.6),
+    0 0 30px -8px rgba(255, 42, 42, 0.25);
+}
+
+.work-mobile-card-image {
+  width: 100%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+}
+
+.work-mobile-card-image .work-image {
+  width: 100%;
+}
+
+.work-mobile-card-image .work-image img {
+  width: 100%;
+  max-height: 220px;
+  object-fit: cover;
+  border-radius: 0;
+  transition: transform 0.6s cubic-bezier(0.2, 0, 0.2, 1);
+}
+
+.work-mobile-card:hover .work-image img {
+  transform: scale(1.05);
+}
+
+.work-mobile-card-info {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.work-mobile-card-info .work-slide-number {
+  flex-direction: row;
+  min-width: auto;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.work-mobile-card-info .work-slide-number > span:first-child {
+  font-size: 28px;
+}
+
+.work-mobile-card-info .work-slide-divider {
+  height: 1px;
+  width: 20px;
+}
+
+.work-mobile-card-info .work-slide-description {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.work-mobile-card-info .work-slide-cta {
+  margin-top: 16px;
+}
+
 @media only screen and (max-width: 768px) {
-  .work-slide {
-    transform: translateY(30px);
-    transition: opacity 0.4s cubic-bezier(0.2, 0, 0.2, 1),
-                transform 0.4s cubic-bezier(0.2, 0, 0.2, 1);
-  }
-
-  .work-slide-active {
-    transform: translateY(0);
-  }
-
-  .work-slide-exit {
-    transform: translateY(-30px);
-  }
-
-  .work-pinned-header h2 {
-    font-size: 32px;
+  .work-mobile-section {
+    padding: 40px 0 30px;
   }
 
   .work-pinned-header {
     margin-bottom: 14px;
     align-items: center;
     text-align: center;
-  }
-
-  .work-slide-content {
     flex-direction: column;
-    gap: 14px;
-    padding: 10px 0;
-    text-align: center;
-  }
-
-  .work-slide-info {
-    flex-direction: column;
-    align-items: center;
     gap: 8px;
-    padding: 16px;
-    background: rgba(0, 0, 0, 0.85);
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    width: 100%;
-    box-sizing: border-box;
   }
 
-  .work-slide-number {
-    flex-direction: row;
-    min-width: auto;
-    gap: 10px;
-  }
-
-  .work-slide-number > span:first-child {
+  .work-pinned-header h2 {
     font-size: 32px;
   }
 
-  .work-slide-divider {
-    height: 1px;
-    width: 20px;
+  .work-mobile-list {
+    gap: 24px;
   }
 
-  .work-slide-details {
+  .work-mobile-card-image .work-image img {
+    max-height: 180px;
+  }
+
+  .work-mobile-card-info {
+    padding: 16px;
+    text-align: center;
     align-items: center;
   }
 
-  .work-slide-title {
+  .work-mobile-card-info .work-slide-title {
     font-size: 22px;
   }
 
-  .work-slide-description {
+  .work-mobile-card-info .work-slide-description {
     font-size: 13px;
     line-height: 1.5;
-    margin: 4px 0;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
   }
 
-  .work-tools-tags {
+  .work-mobile-card-info .work-tools-tags {
     justify-content: center;
-  }
-
-  /* Cap image by viewport height so it can't push the card off-screen */
-  .work-image img {
-    max-height: min(160px, 22vh);
   }
 
   .project-live-link {
     padding: 10px 20px;
     font-size: 11px;
   }
-
-  .work-pinned-container {
-    padding: 14px 0;
-  }
 }
 
 @media only screen and (max-width: 480px) {
+  .work-mobile-section {
+    padding: 30px 0 20px;
+  }
+
   .work-pinned-header h2 {
     font-size: 26px;
   }
 
-  .work-slide-info {
-    padding: 12px;
-    gap: 5px;
+  .work-mobile-list {
+    gap: 20px;
   }
 
-  .work-slide-title {
+  .work-mobile-card-image .work-image img {
+    max-height: 150px;
+  }
+
+  .work-mobile-card-info {
+    padding: 14px;
+    gap: 4px;
+  }
+
+  .work-mobile-card-info .work-slide-title {
     font-size: 18px;
   }
 
-  .work-slide-description {
+  .work-mobile-card-info .work-slide-description {
     font-size: 12px;
-    margin: 2px 0;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .work-slide-tools {
-    margin-top: 5px;
   }
 
   .work-tool-tag {
@@ -534,15 +586,7 @@
     font-size: 9px;
   }
 
-  .work-slide-cta {
+  .work-mobile-card-info .work-slide-cta {
     margin-top: 12px;
-  }
-
-  .work-image img {
-    max-height: min(110px, 18vh);
-  }
-
-  .work-scroll-hint {
-    bottom: 10px;
   }
 }

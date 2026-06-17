@@ -1,5 +1,6 @@
 import { SplitText } from "gsap/SplitText";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { smoother } from "../Navbar";
 
 export function initialFX() {
@@ -53,5 +54,14 @@ export function initialFX() {
       ease: "power1.inOut",
       delay: 0.1,
     }
+  );
+
+  // Recompute all ScrollTrigger positions now that the real layout is live:
+  // the loading screen is gone, scrolling is enabled and the smoother is
+  // running. Measurements taken earlier (during the loading screen, while the
+  // page was non-scrollable) are stale and make the pinned Work section jump
+  // in production — this corrects them against the final layout.
+  requestAnimationFrame(() =>
+    requestAnimationFrame(() => ScrollTrigger.refresh())
   );
 }
