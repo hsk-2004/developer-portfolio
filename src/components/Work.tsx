@@ -64,7 +64,6 @@ const Work = () => {
 
     const slides = slidesRef.current.filter(Boolean) as HTMLDivElement[];
     const totalSlides = slides.length;
-    const stableVH = document.documentElement.clientHeight;
 
     slides[0]?.classList.add("work-slide-active");
 
@@ -72,7 +71,10 @@ const Work = () => {
       ScrollTrigger.create({
         trigger: sectionRef.current,
         start: "top top",
-        end: () => `+=${stableVH * (totalSlides - 1)}`,
+        // Measured live so invalidateOnRefresh recomputes the correct pin
+        // distance after fonts/images load — a frozen value leaves the pin
+        // spacing out of sync and dumps the offset as a jump at the footer.
+        end: () => `+=${document.documentElement.clientHeight * (totalSlides - 1)}`,
         pin: true,
         pinType: "transform",
         pinSpacing: true,
