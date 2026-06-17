@@ -6,6 +6,16 @@
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Harman Singh — Full Stack Software Engineer</title>
+  <script>
+    // Dark is the default on every fresh visit. A light choice is remembered
+    // only for the current session (sessionStorage), applied before first
+    // paint to avoid a flash of the wrong theme.
+    try {
+      if (sessionStorage.getItem("theme") === "light") {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    } catch (e) {}
+  </script>
 </head>
 
 <body>

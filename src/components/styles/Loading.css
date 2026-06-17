@@ -1,3 +1,14 @@
+/* Keep the loading screen exactly as the original design, independent of the
+   site's light/dark theme. Pin its tokens + inherited text to the original
+   (dark-theme) values so a light session can't recolour the intro. */
+.loading-header,
+.loading-screen {
+  --backgroundColor: #000000;
+  --bg: #000000;
+  --text: #eae5ec;
+  color: #eae5ec;
+}
+
 .loading-screen {
   position: fixed;
   width: 100vw;

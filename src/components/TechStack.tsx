@@ -3,18 +3,32 @@ import "./styles/TechStack.css";
 
 const technologies = [
   { name: "React", logo: "/images/tech/react.svg" },
-  { name: "Next.js", logo: "/images/tech/nextjs.svg" },
+  // mono = white logo; inverted to dark in light mode so it stays visible
+  { name: "Next.js", logo: "/images/tech/nextjs.svg", mono: true },
   { name: "Node.js", logo: "/images/tech/nodejs.svg" },
-  { name: "Express", logo: "/images/tech/express.svg" },
+  { name: "Express", logo: "/images/tech/express.svg", mono: true },
   { name: "MongoDB", logo: "/images/tech/mongodb.svg" },
   { name: "MySQL", logo: "/images/tech/mysql.svg" },
   { name: "TypeScript", logo: "/images/tech/typescript.svg" },
   { name: "JavaScript", logo: "/images/tech/javascript.svg" },
 ];
 
-const TechChip = ({ name, logo }: { name: string; logo: string }) => (
+const TechChip = ({
+  name,
+  logo,
+  mono,
+}: {
+  name: string;
+  logo: string;
+  mono?: boolean;
+}) => (
   <div className="tech-loop-item">
-    <img src={logo} alt={name} loading="lazy" />
+    <img
+      className={mono ? "tech-logo-mono" : undefined}
+      src={logo}
+      alt={name}
+      loading="lazy"
+    />
     <span>{name}</span>
   </div>
 );

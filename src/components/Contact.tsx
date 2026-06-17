@@ -8,7 +8,6 @@ const Contact = () => {
 
         {/* Big CTA Heading */}
         <div className="contact-header">
-          <div className="contact-header-bg">Great.</div>
           <h2 className="contact-headline">
             Let's <span>Build</span>
             <br /> Something Great.
@@ -73,6 +72,11 @@ const Contact = () => {
           </div>
         </div>
 
+      </div>
+
+      {/* Big glassy signature name */}
+      <div className="contact-signature">
+        <h2 className="contact-signature-name">Harman Singh</h2>
       </div>
 
       {/* Animated background lines */}

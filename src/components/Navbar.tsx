@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HoverLinks from "./HoverLinks";
+import ThemeToggle from "./ThemeToggle";
 import { gsap } from "gsap";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { FaGithub, FaInstagram, FaLinkedinIn } from "react-icons/fa6";
@@ -47,6 +48,23 @@ const Navbar = () => {
       ScrollSmoother.refresh(true);
     });
 
+    // Hide the header while scrolling down, reveal it when scrolling up
+    // (or when near the top). Driven by ScrollTrigger so it reads the
+    // smoothed scroll position from ScrollSmoother.
+    const headerEl = document.querySelector(".header");
+    ScrollTrigger.create({
+      start: 0,
+      end: "max",
+      onUpdate: (self) => {
+        if (!headerEl) return;
+        if (self.direction === 1 && self.scroll() > 150) {
+          headerEl.classList.add("navbar-hidden");
+        } else if (self.direction === -1 || self.scroll() <= 150) {
+          headerEl.classList.remove("navbar-hidden");
+        }
+      },
+    });
+
     // Re-measure once images/fonts finish loading. In production (Vercel)
     // assets load over the network *after* ScrollTrigger's first measurement,
     // shifting section heights and leaving the pin math stale — which makes
@@ -80,6 +98,7 @@ const Navbar = () => {
           </li>
         </ul>
         <div className="navbar-socials">
+          <ThemeToggle />
           <a
             href="/HarmanSingh-DEV.pdf"
             target="_blank"

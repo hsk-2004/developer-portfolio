@@ -12,12 +12,12 @@
 .about-container {
   width: var(--cWidth);
   max-width: 900px;
-  background: rgba(0, 0, 0, 0.85);
+  background: var(--card);
   backdrop-filter: blur(15px);
   padding: 60px;
   border-radius: 20px;
   border: 1px solid rgba(255, 42, 42, 0.3);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 20px 50px var(--shadow-strong);
   position: relative;
 }
 
@@ -53,7 +53,7 @@
   font-size: 42px;
   line-height: 1.1;
   font-weight: 800;
-  color: #ffffff;
+  color: var(--text);
   margin: 0;
   margin-bottom: 10px;
 }
@@ -62,16 +62,16 @@
   font-size: 18px;
   font-weight: 400;
   line-height: 1.7;
-  color: #f1f5f9;
+  color: var(--text-2);
   margin: 0;
 }
 
 .about-para span {
-  color: #ffffff;
+  color: var(--text);
   font-weight: 900;
   font-size: 1.1em;
   border-bottom: 2px solid #ff2a2a;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  text-shadow: 0 0 10px var(--sheen);
 }
 
 .about-skills-grid {
@@ -173,7 +173,7 @@
   overflow: hidden;
   box-shadow:
     0 0 25px rgba(255, 42, 42, 0.25),
-    0 10px 40px rgba(0, 0, 0, 0.4);
+    0 10px 40px var(--shadow);
   animation: resumePulse 3s ease-in-out infinite;
 }
 
@@ -201,7 +201,7 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.12),
+    var(--sheen),
     transparent
   );
   transition: 0.6s;
@@ -226,7 +226,7 @@
 }
 
 .btn-text {
-  color: #fff;
+  color: var(--text);
   font-size: 16px;
   font-weight: 700;
   letter-spacing: 2px;
@@ -234,14 +234,14 @@
 }
 
 .btn-arrow {
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--text-muted);
   font-size: 20px;
   transition: transform 0.3s ease;
 }
 
 .resume-glass-btn:hover .btn-arrow {
   transform: translateX(5px);
-  color: #fff;
+  color: var(--text);
 }
 
 @media only screen and (max-width: 600px) {

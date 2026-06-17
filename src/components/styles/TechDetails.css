@@ -1,5 +1,5 @@
 .tech-details-section {
-  background-color: #000000;
+  background-color: var(--bg);
   padding: 0 0 100px 0;
   position: relative;
   z-index: 2;
@@ -17,8 +17,8 @@
 
 .tech-details-card {
   padding: 40px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
   border-radius: 8px;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   backdrop-filter: blur(10px);
@@ -36,7 +36,7 @@
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 5px;
-  color: #ff2a2a;
+  color: var(--accent);
   margin: 0 0 30px;
   text-shadow: 0 0 10px rgba(255, 42, 42, 0.3);
 }
@@ -52,9 +52,9 @@
   font-size: 16px;
   font-weight: 700;
   padding: 10px 24px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: #ffffff;
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  color: var(--text);
   transition: all 0.3s ease;
   border-radius: 4px;
   letter-spacing: 0.5px;

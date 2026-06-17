@@ -194,6 +194,7 @@
   line-height: 1;
   font-weight: 800;
   font-family: "Geist", sans-serif;
+  /* hero sits over the dark 3D frames in BOTH themes — keep it light */
   color: #ffffff;
   letter-spacing: -1px;
 }
