@@ -46,6 +46,15 @@ const Navbar = () => {
     window.addEventListener("resize", () => {
       ScrollSmoother.refresh(true);
     });
+
+    // Re-measure once images/fonts finish loading. In production (Vercel)
+    // assets load over the network *after* ScrollTrigger's first measurement,
+    // shifting section heights and leaving the pin math stale — which makes
+    // pinned sections (e.g. Work) drift while scrolling. These refreshes
+    // recompute the cached start/end positions against the final layout.
+    const refresh = () => ScrollTrigger.refresh();
+    window.addEventListener("load", refresh);
+    document.fonts?.ready.then(refresh);
   }, []);
   return (
     <>
