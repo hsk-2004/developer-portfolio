@@ -234,12 +234,16 @@ h2.landing-info-h2 {
 
 @media screen and (max-width: 768px) {
   .landing-intro h1 {
-    font-size: 32px;
+    font-size: clamp(42px, 13vw, 56px);
+    line-height: 0.95;
+    letter-spacing: -1.5px;
     text-align: center;
   }
-  
+
   h2.landing-info-h2 {
-    font-size: 24px;
+    font-size: clamp(24px, 8vw, 34px);
+    line-height: 1.08;
+    letter-spacing: -0.5px;
     text-align: center;
   }
 
@@ -248,24 +252,21 @@ h2.landing-info-h2 {
     margin: auto;
     height: 100%;
     position: relative;
-  }
-
-  .landing-intro {
-    position: absolute;
-    top: 15%;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    width: 100%;
-    transform: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
     text-align: center;
   }
 
+  .landing-intro,
   .landing-info {
-    position: absolute;
-    bottom: 40px;
-    left: 0;
-    right: 0;
+    position: static;
+    top: auto;
+    bottom: auto;
+    left: auto;
+    right: auto;
     margin: 0 auto;
     width: 100%;
     transform: none;
@@ -276,10 +277,18 @@ h2.landing-info-h2 {
     height: 100svh;
   }
 
-  .landing-label, .landing-role-label {
+  .landing-label {
     text-align: center;
-    letter-spacing: 3px;
-    margin-right: -3px;
+    font-size: 12px;
+    letter-spacing: 4px;
+    margin: 0 -4px 14px 0;
+  }
+
+  .landing-role-label {
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 5px;
+    margin: 0 -5px 10px 0;
   }
 }
 
