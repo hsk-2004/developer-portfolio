@@ -106,35 +106,6 @@ const Work = () => {
     return () => ctx.revert();
   }, [isMobile]);
 
-  // ── Mobile: simple fade-in cards (NO pinning at all) ──
-  useEffect(() => {
-    if (!isMobile) return;
-
-    const cards = slidesRef.current.filter(Boolean) as HTMLDivElement[];
-
-    const ctx = gsap.context(() => {
-      cards.forEach((card) => {
-        gsap.fromTo(
-          card,
-          { opacity: 0, y: 40 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.6,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: card,
-              start: "top 85%",
-              toggleActions: "play none none none",
-            },
-          }
-        );
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, [isMobile]);
-
   // ── Desktop layout: pinned with absolute-positioned slides ──
   if (!isMobile) {
     return (

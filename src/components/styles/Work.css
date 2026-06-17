@@ -430,19 +430,27 @@
 }
 
 .work-mobile-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 16px;
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.04),
+    rgba(255, 255, 255, 0.015)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
   overflow: hidden;
-  transition: transform 0.4s ease, border-color 0.4s ease,
-    box-shadow 0.4s ease;
 }
 
-.work-mobile-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(255, 42, 42, 0.3);
-  box-shadow: 0 18px 50px -12px rgba(0, 0, 0, 0.6),
-    0 0 30px -8px rgba(255, 42, 42, 0.25);
+/* Static red accent line at the top of each card — no motion */
+.work-mobile-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #ff2a2a, transparent 70%);
+  z-index: 2;
 }
 
 .work-mobile-card-image {
@@ -457,42 +465,56 @@
 
 .work-mobile-card-image .work-image img {
   width: 100%;
-  max-height: 220px;
+  /* uniform framing across all cards for a consistent, professional grid */
+  aspect-ratio: 16 / 10;
+  max-height: none;
+  height: auto;
   object-fit: cover;
   border-radius: 0;
-  transition: transform 0.6s cubic-bezier(0.2, 0, 0.2, 1);
-}
-
-.work-mobile-card:hover .work-image img {
-  transform: scale(1.05);
 }
 
 .work-mobile-card-info {
-  padding: 20px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
 }
 
 .work-mobile-card-info .work-slide-number {
   flex-direction: row;
+  align-items: center;
   min-width: auto;
-  gap: 10px;
-  margin-bottom: 4px;
+  gap: 8px;
+  margin-bottom: 2px;
 }
 
 .work-mobile-card-info .work-slide-number > span:first-child {
-  font-size: 28px;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.work-mobile-card-info .work-slide-total {
+  font-size: 13px;
 }
 
 .work-mobile-card-info .work-slide-divider {
   height: 1px;
-  width: 20px;
+  width: 24px;
+}
+
+.work-mobile-card-info .work-slide-category {
+  margin-top: 6px;
+}
+
+.work-mobile-card-info .work-slide-title {
+  margin-top: 2px;
 }
 
 .work-mobile-card-info .work-slide-description {
   display: -webkit-box;
   -webkit-line-clamp: 3;
+  line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
