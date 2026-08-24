@@ -153,6 +153,12 @@
   letter-spacing: -1px;
 }
 
+.work-slide-description .work-highlight {
+  color: var(--text);
+  font-weight: 700;
+  border-bottom: 1px solid #ff2a2a;
+}
+
 .work-slide-description {
   font-size: 15px;
   line-height: 1.7;

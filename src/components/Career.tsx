@@ -16,32 +16,32 @@ const Career = () => {
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Full Stack Engineer</h4>
-                <h5>SkyForge System Solutions</h5>
+                <h4>Product Engineer</h4>
+                <h5>Hospiverse India (Startup)</h5>
               </div>
-              <h3>2026</h3>
+              <h3>Jul 2026 – Present</h3>
             </div>
             <p>
-              Developed <span>scalable web applications</span> with responsive UI and integrated RESTful APIs. Deployed production-ready apps on <span>Azure servers</span> and utilized Git workflows for collaborative development.
+              Drove end-to-end product engineering for a <span>B2B HORECA procurement platform</span>, accelerating startup revenue to <span>6 figures within 3 months</span>. Architected and shipped marketplace features while diagnosing frontend, backend, and database bottlenecks.
             </p>
             <div className="career-tags">
-              <span>React</span><span>Node.js</span><span>Azure</span><span>REST APIs</span>
+              <span>Next.js</span><span>Supabase</span><span>TypeScript</span><span>Product Engineering</span>
             </div>
           </div>
 
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Web Developer Intern</h4>
-                <h5>Yugasa Software Labs</h5>
+                <h4>Full Stack Engineer – Intern</h4>
+                <h5>SkyForge System Solutions</h5>
               </div>
-              <h3>2025</h3>
+              <h3>Mar 2026 – Present</h3>
             </div>
             <p>
-              Built <span>frontend components</span> and integrated backend APIs using Node.js and PHP. Assisted in debugging, testing, and <span>deployment pipelines</span> for client-facing web applications.
+              Developed <span>RPA and web scraping</span> workflows to automate data collection, and built responsive UI with integrated RESTful APIs through pair programming. Deployed applications on <span>Azure servers</span> via CI/CD pipelines built with GitHub Actions and Jenkins.
             </p>
             <div className="career-tags">
-              <span>Node.js</span><span>PHP</span><span>Frontend</span><span>Testing</span>
+              <span>RPA</span><span>Azure</span><span>CI/CD</span><span>REST APIs</span>
             </div>
           </div>
 

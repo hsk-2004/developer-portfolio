@@ -10,19 +10,61 @@ gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
   {
+    title: "Hospiverse India",
+    category: "B2B HORECA Procurement Platform",
+    description: (
+      <>
+        A B2B procurement and sourcing marketplace connecting buyers with 40+
+        verified suppliers, including paying brands{" "}
+        <span className="work-highlight">SALVA</span> and{" "}
+        <span className="work-highlight">Wang Professionals</span>, engineered
+        end-to-end using DMAIC to optimize the full platform stack.
+      </>
+    ),
+    tools: ["Next.js", "TypeScript", "Supabase", "Tailwind CSS"],
+    image: "/images/hospiverse.png",
+    link: "https://www.hospiverse.in/",
+  },
+  {
+    title: "Freightos",
+    category: "Global Freight Agent Directory",
+    description: (
+      <>
+        A scraping-driven directory of 44,000+ verified freight agents built
+        with <span className="work-highlight">SeleniumBase's CDP Mode</span>{" "}
+        for automated login, form-filling, and data extraction, with bulk
+        agent selection and scheduled email outreach.
+      </>
+    ),
+    tools: ["Next.js", "React", "Microsoft Azure", "Web Scraping"],
+    image: "/images/frieghtos.png",
+    link: "https://freightos.harmanxdev.fun",
+  },
+  {
     title: "Hlty.care",
     category: "Wellness Platform",
-    description:
-      "A full-scale wellness ecosystem with role-based dashboards, automated onboarding, and integrated Shopify commerce for a U.S. healthcare client.",
-    tools: ["Next.js", "Shopify", "Tailwind CSS", "Prisma ORM"],
+    description: (
+      <>
+        A role-based wellness platform with segmented journeys for parents,
+        clinicians, and educators, featuring{" "}
+        <span className="work-highlight">Shopify</span>-integrated workflows
+        for instant resource delivery and automated onboarding.
+      </>
+    ),
+    tools: ["Next.js", "Shopify", "Tailwind CSS"],
     image: "/images/hlty.care.png",
     link: "https://hlty.care",
   },
   {
     title: "SkyForge",
     category: "Enterprise Frontend",
-    description:
-      "A high-performance enterprise frontend application built with reusable component architecture and client-side routing for SkyForge System Solutions.",
+    description: (
+      <>
+        A high-performance enterprise frontend application built with
+        reusable component architecture and client-side routing for{" "}
+        <span className="work-highlight">SkyForge System Solutions</span>.
+      </>
+    ),
     tools: ["React", "Tailwind CSS", "REST APIs", "Azure"],
     image: "/images/skyforge.png",
     link: "https://buildwithskyforge.com/",
@@ -30,8 +72,12 @@ const projects = [
   {
     title: "QuickQR",
     category: "Scalable Backend",
-    description:
-      "A production-grade backend system featuring RESTful APIs, PostgreSQL database design with Prisma ORM, and CI/CD deployment pipelines.",
+    description: (
+      <>
+        A production-grade backend system featuring RESTful APIs, PostgreSQL
+        database design with Prisma ORM, and CI/CD deployment pipelines.
+      </>
+    ),
     tools: ["Node.js", "Express", "PostgreSQL", "Prisma ORM"],
     image: "/images/quickqr.png",
     link: "https://quickqr.harmanxdev.fun/",
@@ -39,8 +85,12 @@ const projects = [
   {
     title: "Instalearn",
     category: "Landing Page",
-    description:
-      "A high-conversion landing page for an AI-powered learning platform, featuring modern UI components and seamless content delivery.",
+    description: (
+      <>
+        A high-conversion landing page for an AI-powered learning platform,
+        featuring modern UI components and seamless content delivery.
+      </>
+    ),
     tools: ["Next.js", "Tailwind CSS", "Framer Motion"],
     image: "/images/instalearn.png",
     link: "https://instalearnapp.com/",

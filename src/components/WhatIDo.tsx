@@ -43,21 +43,20 @@ const WhatIDo = () => {
             <div className="what-corner"></div>
 
             <div className="what-content-in">
-              <h3>AI & INTELLIGENCE</h3>
-              <h4>AI-Powered Platforms</h4>
+              <h3>AUTOMATION & AI</h3>
+              <h4>RPA & AI-Powered Platforms</h4>
               <p>
-                Focused on building <span>AI-powered platforms</span> and AI-integrated systems, 
-                leveraging LLMs and RAG architectures to deliver production-ready digital products.
+                Focused on building <span>RPA workflows</span> and <span>web scraping</span> pipelines,
+                alongside AI-integrated systems using LLMs to deliver production-ready digital products.
               </p>
-              <h5>Expertise & Models</h5>
+              <h5>Expertise & Tools</h5>
               <div className="what-content-flex">
-                <div className="what-tags">ChatGPT</div>
+                <div className="what-tags">RPA</div>
+                <div className="what-tags">Web Scraping</div>
+                <div className="what-tags">Browser Automation</div>
+                <div className="what-tags">Workflow Automation</div>
                 <div className="what-tags">Claude</div>
-                <div className="what-tags">Gemini</div>
-                <div className="what-tags">DeepSeek</div>
-                <div className="what-tags">Codex</div>
-                <div className="what-tags">RAG Pipelines</div>
-                <div className="what-tags">LLM Agents</div>
+                <div className="what-tags">Generative AI</div>
               </div>
               <div className="what-arrow"></div>
             </div>
@@ -71,15 +70,17 @@ const WhatIDo = () => {
               <h3>FULL STACK ENG</h3>
               <h4>Scalable Infrastructures</h4>
               <p>
-                Expertise in <span>frontend engineering</span>, backend architecture, 
-                and cloud deployment, with strong hands-on experience in the MERN ecosystem and Next.js.
+                Expertise in <span>frontend engineering</span>, backend architecture,
+                and cloud deployment, with strong hands-on experience across React, Next.js, and Node.js.
               </p>
               <h5>Core Stack</h5>
               <div className="what-content-flex">
+                <div className="what-tags">React.js</div>
                 <div className="what-tags">Next.js</div>
+                <div className="what-tags">Node.js / Express</div>
                 <div className="what-tags">PostgreSQL</div>
-                <div className="what-tags">Node.js</div>
-                <div className="what-tags">Docker</div>
+                <div className="what-tags">Supabase</div>
+                <div className="what-tags">Docker / Kubernetes</div>
                 <div className="what-tags">AWS / Azure</div>
               </div>
               <div className="what-arrow"></div>

@@ -100,7 +100,7 @@ const Navbar = () => {
         <div className="navbar-socials">
           <ThemeToggle />
           <a
-            href="/HarmanSingh-DEV.pdf"
+            href="/Harman-Singh-Resume.pdf"
             target="_blank"
             rel="noreferrer"
             className="navbar-resume-link"
